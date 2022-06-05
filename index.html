@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset=UTF-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <link rel=preload href=/assets/fonts/bold.ttf as=font type=font/ttf crossorigin>
+        <link rel=preload href=/assets/fonts/medium.ttf as=font type=font/ttf crossorigin>
+        <link rel=preload href=/assets/fonts/heavy.ttf as=font type=font/ttf crossorigin>
+        <link rel=icon href=assets/heavy.ico>
+        <title>ULL</title>
+
+        <link rel=stylesheet href=style/index.css>
+        <link rel=stylesheet href=style/upload.css>
+        <link rel=stylesheet href=style/gray.css>
+        <link rel=stylesheet href=style/color.css>
+        <link rel=stylesheet href=style/mono.css>
+        <link rel=stylesheet href=style/save.css>
+        <script type=module src=script/index.js defer></script>
+    </head>
+
+    <body>
+        <div id=head class="head new">
+            <button class=box>
+                <div class=icon></div>
+            </button>
+        </div>
+
+        <div id=main>
+
+            <div id=top>
+                <span class=name><span>C</span>ULL</span>
+                <div class=link>
+                    <a target=_blank href=/ >
+                        <span>Information</span>
+                        <div class="icon info"></div>
+                    </a>
+                </div>
+            </div>
+
+            <div id=steps>
+
+
+
+                <div id=upload class=step>
+                    <div id=images></div>
+                    <div id=message>
+                        <span></span>
+                    </div>
+                    <input type=file accept="image/*" multiple id=files />
+                    <label for=files><div class="icon upload"></div></label>
+                </div>
+
+
+
+                <div id=gray class=step>
+                    <div class=preview>
+                        <canvas></canvas>
+                        <div class=scroll>
+                            <button class="icon back"></button>
+                            <div class=bar></div>
+                            <button class="icon next"></button>
+                        </div>
+                    </div>
+
+                    <div class=bot>
+                        <div class=rows>
+                            <div class=row>
+                                <input value=0 name=gray type=radio id=default-radio />
+                                <label for=default-radio class=icon></label>
+                                <label for=default-radio>Default grayscale algorithm</label>
+                            </div>
+                            <div class=row>
+                                <input value=1 name=gray type=radio id=simple-radio />
+                                <label for=simple-radio class=icon></label>
+                                <label for=simple-radio>Target only</label>
+                                <input type=checkbox id=red-check />
+                                <label for=red-check class=red>RED</label>
+                                <input type=checkbox id=green-check />
+                                <label for=green-check class=green>GREEN</label>
+                                <input type=checkbox id=blue-check />
+                                <label for=blue-check class=blue>BLUE</label>
+                            </div>
+                            <div class=row>
+                                <input value=2 name=gray type=radio id=advanced-radio />
+                                <label for=advanced-radio class=icon></label>
+                                <label for=advanced-radio>Target custom</label>
+                                <button id=front class=light>FRONT</button>
+                                <button id=back class=dark>BACK</button>
+                                <input type=checkbox id=range-check />
+                                <label for=range-check>WRAP</label>
+                                <label for=range-check>CUT</label>
+                            </div>
+                        </div>
+
+                        <div class=picker>
+                            <div class=row>
+                                <span>Pick target</span>
+                                <span class=target></span>
+                                <div class=gray>
+                                    <input type=checkbox id=gray-check />
+                                    <label for=gray-check class=icon></label>
+                                    <label for=gray-check>Show grayscale</label>
+                                </div>
+                            </div>
+                            <div class="row color">
+                                <span>#</span>
+                                <input type=text maxlength=6 id=pick-hex />
+                            </div>
+                            <div class=row>
+                                <button class=cancel>Cancel</button>
+                                <button class=reset>Reset</button>
+                                <button class=pick>Pick</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id=color class=step>
+                    <div class=sep></div>
+                    <span class=color>
+                        <span>Background</span>
+                        <span>#</span>
+                        <input type=text maxlength=6 id=back-hex />
+                    </span>
+                    <div class=row>
+                        <span>Hue</span>
+                        <input type=range min=0 max=360 class=hue id=hue-back-range />
+                    </div>
+                    <div class=row>
+                        <span>Saturation</span>
+                        <input type=range min=0 max=100 class=saturation id=saturation-back-range />
+                    </div>
+                    <div class=row>
+                        <span>Value</span>
+                        <input type=range min=0 max=100 class=value id=value-back-range />
+                    </div>
+
+                    <div class=sep></div>
+
+                    <span class=color>
+                        <span>Foreground</span>
+                        <span>#</span>
+                        <input type=text maxlength=6 id=front-hex />
+                    </span>
+                    <div class=row>
+                        <span>Hue</span>
+                        <input type=range min=0 max=360 class=hue id=hue-front-range />
+                    </div>
+                    <div class=row>
+                        <span>Saturation</span>
+                        <input type=range min=0 max=100 class=saturation id=saturation-front-range />
+                    </div>
+                    <div class=row>
+                        <span>Value</span>
+                        <input type=range min=0 max=100 class=value id=value-front-range />
+                    </div>
+
+                    <div class=sep></div>
+
+                    <div class=preview></div>
+                </div>
+
+
+
+                <div id=mono class=step>
+                    <div class=preview>
+                        <canvas></canvas>
+                        <div class=scroll>
+                            <button class="icon back"></button>
+                            <div class=bar></div>
+                            <button class="icon next"></button>
+                        </div>
+                    </div>
+
+                    <div class=row>
+                        <input type=checkbox id=inverse-check />
+                        <label for=inverse-check class=icon></label>
+                        <label for=inverse-check>Inverse colors</label>
+                    </div>
+                    <div class=row>
+                        <span class=name>Contrast</span>
+                        <input type=range min=0 max=10 id=contrast-range />
+                        <span>10</span>
+                    </div>
+                    <div class=row>
+                        <span>0</span>
+                        <div class=duo>
+                            <input type=range min=0 max=252 step=4 id=dark-range />
+                            <input type=range min=3 max=255 step=4 id=light-range />
+                        </div>
+                        <span>255</span>
+                    </div>
+                </div>
+
+
+
+                <div id=save class=step>
+                    <div class=sep></div>
+                    <div class=row>
+                        <input value=0 name=output type=radio id=delay-radio />
+                        <label for=delay-radio class=icon></label>
+                        <label for=delay-radio>Delay download until next save</label>
+                    </div>
+                    <div class=row>
+                        <input value=1 name=output type=radio id=files-radio />
+                        <label for=files-radio class=icon></label>
+                        <label for=files-radio>Download individually<span class=target></span></label>
+                    </div>
+                    <div class=row>
+                        <input value=2 name=output type=radio id=collage-radio />
+                        <label for=collage-radio class=icon></label>
+                        <label for=collage-radio>Download as collage</label>
+                    </div>
+                    <div class=row>
+                        <input value=3 name=output type=radio id=zip-radio />
+                        <label for=zip-radio class=icon></label>
+                        <label for=zip-radio>Download as ZIP</label>
+                    </div>
+
+                    <div class=sep></div>
+
+                    <span>Scaling</span>
+                    <div class=row>
+                        <input type=checkbox id=width-check />
+                        <label for=width-check class=icon></label>
+                        <label for=width-check>Max width</label>
+                        <input type=number id=width-input />
+                        <label for=width-input>px</label>
+                    </div>
+                    <div class=row>
+                        <input type=checkbox id=height-check />
+                        <label for=height-check class=icon></label>
+                        <label for=height-check>Max height</label>
+                        <input type=number id=height-input />
+                        <label for=height-input>px</label>
+                    </div>
+                    <div class=row>
+                        <input type=checkbox id=scale-check />
+                        <label for=scale-check class=icon></label>
+                        <label for=scale-check>Min scale</label>
+                        <input type=range min=5 max=100 step=5 id=scale-range />
+                        <label for=scale-range>%</label>
+                    </div>
+
+                    <div class=sep></div>
+
+                    <div class=row>
+                        <input value=1 name=scale type=radio id=width-radio />
+                        <label for=width-radio class=icon></label>
+                        <label for=width-radio>Scale all to the same width<span class=target></span></label>
+                    </div>
+                    <div class=row>
+                        <input value=2 name=scale type=radio id=height-radio />
+                        <label for=height-radio class=icon></label>
+                        <label for=height-radio>Scale all to the same height<span class=target></span></label>
+                    </div>
+                    <div class=row>
+                        <input value=3 name=scale type=radio id=scaling-radio />
+                        <label for=scaling-radio class=icon></label>
+                        <label for=scaling-radio>Scale all by the same factor<span class=target></span></label>
+                    </div>
+
+                    <div class="row process">
+                        <span>Estimated processing</span>
+                        <span class=estimate></span>
+                        <button>OK</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div id=bot>
+                <button class=back disabled>
+                    <div class=icon></div>
+                    <span>Back</span>
+                </button>
+                <div class=text>
+                    <span></span>
+                </div>
+                <button class=next disabled>
+                    <span>Next</span>
+                    <div class=icon></div>
+                    <span>Save</span>
+                </button>
+            </div>
+        </div>
+
+    </body>
+</html>

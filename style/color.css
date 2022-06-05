@@ -1,0 +1,138 @@
+#color {
+    overflow-y: auto;
+}
+
+#color .preview {
+    min-height: 5rem;
+    margin-bottom: 0 !important;
+    border-radius: var(--radius);
+
+    --back: black;
+    --front: white;
+    background: linear-gradient(to right, var(--back) 10%, var(--front) 90%);
+}
+
+#color :is(.row,  .row input[type=range]) {
+    overflow: visible;
+}
+
+#color .row span {
+    width: 6rem;
+    margin-right: 1rem;
+    flex-shrink: 1;
+}
+
+#color .row input[type=range] {
+    height: 100%;
+    flex-grow: 1;
+    border-radius: var(--radius);
+    border: 2px solid var(--hover);
+}
+
+#color .row input[type=range].hue {
+    --s: 100%;
+    --l: 50%;
+
+    background: linear-gradient(to right,
+        hsl(0, var(--s), var(--l)),
+        hsl(60, var(--s), var(--l)),
+        hsl(120, var(--s), var(--l)),
+        hsl(180, var(--s), var(--l)),
+        hsl(240, var(--s), var(--l)),
+        hsl(300, var(--s), var(--l)),
+        hsl(360, var(--s), var(--l))
+    );
+}
+
+#color .row input[type=range].saturation {
+    --c: black;
+    background: linear-gradient(to right, white, var(--c));
+}
+
+#color .row input[type=range].value {
+    --c: white;
+    background: linear-gradient(to right, black, var(--c));
+
+}
+
+@supports not (-moz-appearance: none) {
+    #color .row input[type=range]::-webkit-slider-thumb {
+        transform: translateY(-0.5rem);
+
+        --size: 1.5rem;
+        width: var(--size);
+        height: var(--size);
+        background-color: var(--inverse);
+
+        --mask-position: center;
+        --mask-repeat: no-repeat;
+        --mask-size: var(--size) var(--size);
+        --mask-image: url(/assets/icons/pin.svg);
+
+        mask-size: var(--mask-size);
+        mask-image: var(--mask-image);
+        mask-repeat: var(--mask-repeat);
+        mask-position: var(--mask-position);
+        -webkit-mask-size: var(--mask-size);
+        -webkit-mask-image: var(--mask-image);
+        -webkit-mask-repeat: var(--mask-repeat);
+        -webkit-mask-position: var(--mask-position);
+    }
+}
+
+@supports (-moz-appearance: none) {
+    #color .row input[type=range]::-moz-range-thumb {
+        transform: translateY(-0.5rem);
+
+        --size: 1.5rem;
+        width: var(--size);
+        height: var(--size);
+        background-color: var(--inverse);
+
+        --mask-position: center;
+        --mask-repeat: no-repeat;
+        --mask-size: var(--size) var(--size);
+        --mask-image: url(/assets/icons/pin.svg);
+
+        mask-size: var(--mask-size);
+        mask-image: var(--mask-image);
+        mask-repeat: var(--mask-repeat);
+        mask-position: var(--mask-position);
+        -webkit-mask-size: var(--mask-size);
+        -webkit-mask-image: var(--mask-image);
+        -webkit-mask-repeat: var(--mask-repeat);
+        -webkit-mask-position: var(--mask-position);
+    }
+}
+
+#color > .color {
+    display: flex;
+}
+
+#color > .color span:first-child {
+    height: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    font-size: inherit;
+    color: inherit;
+}
+
+#color > .color span ~ * {
+    color: var(--muted);
+    opacity: var(--opacity);
+    font-size: 1rem;
+    height: 1.5rem;
+}
+
+#color > .color span + span {
+    padding: 0 0.25rem;
+    margin-top: 6px;
+}
+
+#color > .color input[type=text] {
+    width: 5rem;
+    margin-top: 4px;
+    text-align: center;
+    border-bottom: 2px solid var(--muted);
+    opacity: var(--opacity);
+}

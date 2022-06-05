@@ -1,0 +1,58 @@
+#upload #message {
+    height: 0;
+    padding-bottom: 1rem;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: 0;
+    overflow-y: auto;
+}
+
+#upload #message::-webkit-scrollbar {
+    display: none;
+}
+
+#upload #message span {
+    color: var(--muted);
+    font-weight: initial;
+    white-space: initial;
+    margin-top: 1rem;
+}
+
+#upload label[for=files] {
+    height: 10rem;
+    flex-shrink: 1;
+    margin-top: 1rem;
+
+    border-radius: var(--radius);
+    background-color: var(--hover);
+}
+
+#upload label[for=files] .icon {
+    --size: 2.5rem;
+    width: 100%;
+    height: 100%;
+    background-color: var(--muted);
+}
+
+#upload #images:not(:empty) + #message {
+    display: none;
+}
+
+#upload #images:empty {
+    display: none;
+}
+
+#upload #images {
+    height: 0;
+    flex-grow: 1;
+    padding-left: 1rem;
+
+    display: flex;
+    overflow-x: scroll;
+}
+
+#upload #images img {
+    margin-right: 1rem;
+}

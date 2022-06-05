@@ -1,0 +1,560 @@
+@font-face {
+    font-family: helvetica-neue;
+    src: url(/assets/fonts/medium.ttf);
+}
+
+@font-face {
+    font-weight: bold;
+    font-family: helvetica-neue;
+    src: url(/assets/fonts/bold.ttf);
+}
+
+@font-face {
+    font-weight: 900;
+    font-family: helvetica-neue;
+    src: url(/assets/fonts/heavy.ttf);
+}
+
+html {
+    --foreground: #ffffff;
+    --background: #101010;
+    --surface: #202020;
+    --hover: #303030;
+    --muted: #b0b0b0;
+    --accent: #a18d75;
+    --inverse: #5e728a;
+    --yellow: #faa81a;
+    --green: #3ba55d;
+    --blue: #5865f2;
+    --red: #ed4245;
+
+    --radius: 5px;
+    --transition: 0.3s;
+    --opacity: 0.5;
+    --scale: 0.9;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+}
+
+* {
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+    color: var(--foreground);
+    font-family: helvetica-neue, 'Helvetica Neue', helvetica, arial, sans-serif;
+
+    box-sizing: border-box;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 0;
+    margin: 0;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    background-color: transparent;
+    user-select: none;
+    overflow: hidden;
+    outline: none;
+    border: none;
+}
+
+a, a:link, a:visited, a:hover, a:active, a:focus, a:focus-within, a:focus-visible {
+    text-decoration: none !important;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=file], input[type=radio], input[type=checkbox] {
+    display: none;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+html.static * {
+    transition: none !important;
+}
+
+
+
+/**/
+
+
+
+#main {
+    width: 100%;
+    height: 100%;
+    max-width: 50rem;
+    padding: 1rem;
+    padding-bottom: 0;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#head {
+    display: none;
+}
+
+
+
+/**/
+
+
+
+#top {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#top .name {
+    font-size: 1.5rem;
+    color: var(--accent);
+    padding-right: 1rem;
+}
+
+#top .name span {
+    font-weight: 900;
+    font-size: inherit;
+    color: var(--accent);
+}
+
+html.static #top .name {
+    color: var(--hover);
+}
+
+#top .link {
+    width: 0;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#top .link a {
+    height: 100%;
+    padding-left: 0.5rem;
+
+    display: flex;
+    align-items: center;
+}
+
+#top .link a span {
+    color: var(--muted);
+}
+
+#top .link a .icon {
+    margin-left: 0.5rem;
+    background-color: var(--accent);
+}
+
+#top .head {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+}
+
+#top .head .box {
+    height: 100%;
+    aspect-ratio: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--hover);
+    border-radius: var(--radius);
+}
+
+#top .head .icon {
+    --size: 1rem;
+    background-color: var(--muted);
+}
+
+
+
+#top .head .icon {
+    transition: background-color var(--transition);
+}
+
+#top .head:last-child .icon {
+    background-color: var(--accent);
+}
+
+
+
+#top :is(.link, .head) {
+    transition: flex-grow var(--transition);
+}
+
+#top > :not(.new):last-child {
+    flex-grow: 1;
+}
+
+
+
+/**/
+
+
+
+#bot {
+    height: 4rem;
+    padding: 1rem;
+    margin: 0 -1rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--muted);
+    background-color: black;
+    display: flex;
+}
+
+#bot button {
+    height: 100%;
+    padding: 0 0.5rem;
+    
+    display: flex;
+    align-items: center;
+    border-radius: var(--radius);
+    background-color: var(--accent);
+}
+
+#bot button span {
+    width: 3rem;
+    height: 100%;
+    line-height: 0;
+    font-weight: 900;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--background);
+}
+
+#bot button .icon {
+    height: 100%;
+    margin-right: 0.5rem;
+    background-color: var(--background);
+}
+
+#bot button.next .icon {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+#bot :is(.save :first-child, .next :last-child) {
+    width: 0;
+}
+
+#bot .text {
+    width: 0;
+    height: 100%;
+    flex-grow: 1;
+    position: relative;
+}
+
+#bot .text span {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: inherit;
+}
+
+
+
+#bot button {
+    transition-duration: var(--transition);
+    transition-property: background-color, opacity;
+}
+
+#bot button:disabled {
+    background-color: var(--hover);
+}
+
+#bot button.load:disabled {
+    background-color: var(--accent);
+    opacity: var(--opacity);
+}
+
+
+
+#bot button:is(.next, .save) span {
+    transition: width var(--transition);
+}
+
+#bot :is(button.save :first-child, button.next :last-child) {
+    width: 0;
+}
+
+
+
+#bot .text span {
+    transition: transform var(--transition);
+}
+
+#bot .text  :is(.right.new, .left + span) {
+    transform: translateX(100%);
+}
+
+#bot .text  :is(.left.new, .right + span) {
+    transform: translateX(-100%);
+}
+
+
+
+/**/
+
+
+
+#steps {
+    height: 0;
+    flex-grow: 1;
+    position: relative;
+}
+
+#steps > .step {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    flex-direction: column;
+    display: flex;
+}
+
+#steps > .step {
+    transition: opacity var(--transition), transform var(--transition), visibility 0s var(--transition);
+}
+
+#steps > .step.open {
+    transition: opacity var(--transition), transform var(--transition);
+}
+
+#steps > .step {
+    transform: translateX(0) scale(var(--scale));
+    visibility: hidden;
+}
+
+#steps > .step.open {
+    transform: translateX(0) scale(1);
+    visibility: visible;
+}
+
+#steps > .step.open ~ .step {
+    transform: translateX(100vw) scale(1);
+    visibility: hidden;
+}
+
+
+
+/**/
+
+
+
+#steps > .step {
+    background-color: var(--background);
+    scrollbar-width: 0;
+}
+
+#steps > .step::-webkit-scrollbar {
+    display: none;
+}
+
+#steps > .step.disabled, #steps > .step.disabled * {
+    pointer-events: none !important;
+}
+
+#steps > .step.disabled {
+    opacity: var(--opacity);
+}
+
+#steps > .step > span {
+    height: 2.5rem;
+    font-size: 1.5rem;
+    color: var(--muted);
+}
+
+#steps > .step > .sep {
+    height: 1.5rem;
+}
+
+:where(#steps > .step .row) {
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    display: flex;
+}
+
+:where(#steps > .step .row:last-child) {
+    margin-bottom: 0;
+}
+
+:where(#steps > .step .row :is(input[type=radio], input[type=checkbox]):first-child + label ~ *) {
+    transition: opacity var(--transition);
+    opacity: var(--opacity);
+}
+
+:where(#steps > .step .row :is(input[type=radio], input[type=checkbox]):first-child:checked ~ *) {
+    opacity: 1;
+}
+
+:where(#steps > .step .row :is(input[type=radio], input[type=checkbox]):first-child + label) {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0 !important;
+}
+
+:where(#steps > .step .row :is(input[type=radio], input[type=checkbox]):first-child + label + label) {
+    padding-left: 0.5rem;
+}
+
+#steps > .step > .preview {
+    height: 0;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    display: flex;
+}
+
+#steps > .step > .preview .scroll {
+    height: 2rem;
+    display: flex;
+    border-radius: 100vh;
+    background-color: var(--hover);
+}
+
+#steps > .step > .preview .scroll.only * {
+    opacity: 0.2;
+}
+
+#steps > .step > .preview .scroll .icon {
+    background-color: var(--inverse);
+    --size: 2rem;
+}
+
+#steps > .step > .preview .scroll .bar {
+    width: 0;
+    flex-grow: 1;
+    margin: 2px 0;
+    scroll-snap-type: both mandatory;
+    display: flex;
+}
+
+#steps > .step > .preview .scroll .bar div {
+    width: 0.25rem;
+    flex-grow: 1;
+    margin: 0.25rem 0;
+    margin-right: 0.25rem;
+    background-color: var(--muted);
+    opacity: 0.2;
+}
+
+#steps > .step > .preview .scroll .bar div.open {
+    background-color: var(--inverse);
+    scroll-snap-align: center;
+    opacity: 1;
+}
+
+#steps > .step > .preview .scroll .bar div:last-child {
+    margin-right: 0;
+}
+
+#steps > .step > .preview canvas {
+    height: 0;
+    flex-grow: 1;
+}
+
+
+
+/**/
+
+
+
+.icon.info { --mask-image: url(/assets/icons/info.svg); }
+.icon.upload { --mask-image: url(/assets/icons/upload.svg); }
+.icon.gray { --mask-image: url(/assets/icons/gray.svg); }
+.icon.color { --mask-image: url(/assets/icons/color.svg); }
+.icon.mono { --mask-image: url(/assets/icons/mono.svg); }
+.icon.save { --mask-image: url(/assets/icons/save.svg); }
+.icon.back { --mask-image: url(/assets/icons/back.svg); }
+.icon.next { --mask-image: url(/assets/icons/next.svg); }
+
+
+
+button.back .icon { --mask-image: url(/assets/icons/back.svg); }
+button.next .icon { --mask-image: url(/assets/icons/back.svg); }
+button.save .icon { --mask-image: url(/assets/icons/save.svg); }
+button.load .icon { --mask-image: url(/assets/icons/load.svg); }
+
+button.save .icon { transform: rotate(0deg) scale(0.9); }
+button.next .icon { transform: rotate(180deg) scale(1); }
+html:not(.static) button.load .icon { animation: spin 1.5s ease-in-out infinite; }
+
+button:is(.next, .save):not(.load) .icon {
+    transition: transform var(--transition);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+label.icon {
+    transform: scale(0.6, 0.2);
+    background-color: var(--muted);
+    transition-duration: var(--transition);
+    transition-property: transform, background-color, opacity;
+    --mask-image: url(/assets/icons/square.svg);
+}
+
+:checked + label.icon {
+    transform: scale(1, 1);
+    background-color: var(--accent);
+    --mask-image: url(/assets/icons/check.svg);
+}
+
+
+
+.icon {
+    --size: 1.25rem;
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--foreground);
+
+    --mask-position: center;
+    --mask-repeat: no-repeat;
+    --mask-size: var(--size) var(--size);
+
+    mask-size: var(--mask-size);
+    mask-image: var(--mask-image);
+    mask-repeat: var(--mask-repeat);
+    mask-position: var(--mask-position);
+    -webkit-mask-size: var(--mask-size);
+    -webkit-mask-image: var(--mask-image);
+    -webkit-mask-repeat: var(--mask-repeat);
+    -webkit-mask-position: var(--mask-position);
+}

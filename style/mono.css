@@ -1,0 +1,82 @@
+#mono .row span.name {
+    margin-right: 1rem;
+    width: 0;
+    flex-grow: 1;
+    max-width: min-content;
+}
+
+#mono .row :where(span:not(.name):first-child, span:last-child) {
+    width: 2rem;
+    flex-shrink: 1;
+    margin-right: 1rem;
+}
+
+#mono .row span:last-child {
+    margin-right: 0;
+    margin-left: 1rem;
+    text-align: right;
+}
+
+#mono .row .duo {
+    height: 1.25rem;
+    flex-grow: 1;
+    position: relative;
+}
+
+#mono .row input[type=range] {
+    height: 1.25rem;
+    background-color: var(--hover);
+    border-radius: 100vh;
+    flex-grow: 1;
+}
+
+#mono .row .duo input[type=range] {
+    width: calc(100% - 1rem);
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#mono .row .duo input[type=range]:first-child {
+    background-color: transparent;
+    z-index: 1;
+}
+
+#mono .row .duo input[type=range]:last-child {
+    left: 1rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+@supports not (-moz-appearance: none) {
+    #mono .row input[type=range]::-webkit-slider-thumb {
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 0.25rem solid var(--accent);
+        box-shadow: -50vw 0 0 calc(50vw - 0.5rem) var(--accent);
+        background-color: var(--background);
+        pointer-events: all;
+        border-radius: 50%;
+    }
+
+    #mono .row .duo input[type=range]:first-child::-webkit-slider-thumb {
+        box-shadow: -50vw 0 0 calc(50vw - 0.5rem) var(--hover), -2rem 0 0 2rem var(--accent);
+    }
+}
+
+@supports (-moz-appearance: none) {
+    #mono .row input[type=range]::-moz-range-thumb {
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 0.25rem solid var(--accent);
+        box-shadow: -50vw 0 0 calc(50vw - 0.5rem) var(--accent);
+        background-color: var(--background);
+        pointer-events: all;
+        border-radius: 50%;
+    }
+
+    #mono .row .duo input[type=range]:first-child::-moz-range-thumb {
+        box-shadow: -50vw 0 0 calc(50vw - 0.5rem) var(--hover), -2rem 0 0 2rem var(--accent);
+    }
+}

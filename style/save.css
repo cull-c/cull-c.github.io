@@ -1,0 +1,169 @@
+#save {
+    overflow-y: auto;
+}
+
+#save .process {
+    height: 2rem;
+    margin-top: auto;
+}
+
+#save .process span:first-child {
+    flex-shrink: 1;
+    margin-right: 0.5rem;
+    color: var(--muted);
+}
+
+#save .process :is(.estimate, .estimate  + button) {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    background-color: var(--hover);
+    font-weight: 900;
+    color: black;
+}
+
+#save .process .estimate {
+    flex-grow: 1;
+    padding: 0.25rem 1rem;
+    transition: background-color var(--transition);
+}
+
+#save .process .estimate.green {
+    background-color: var(--green);
+    color: var(--hover);
+}
+
+#save .process .estimate.yellow {
+    background-color: var(--yellow);
+    color: var(--hover);
+}
+
+#save .process .estimate.red {
+    background-color: var(--red);
+    color: var(--hover);
+}
+
+#save .process .estimate + button {
+    width: 0;
+
+    transition-duration: var(--transition);
+    transition-property: color, width;
+}
+
+#save .process .estimate.yellow + button {
+    color: var(--yellow);
+}
+
+#save .process .estimate.red + button {
+    color: var(--red);
+}
+
+#save .process .estimate:is(.yellow, .red) + button:not(.OK) {
+    width: 3rem;
+    margin-left: 0.5rem;
+}
+
+#save .row label {
+    height: 100%;
+    flex-shrink: 1;
+
+    display: flex;  
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#save .row label .target {
+    color: var(--inverse);
+    margin-left: 0.5rem;
+    max-width: 100%;
+}
+
+#save > :first-child + .row + .row label .target {
+    font-weight: 900;
+}
+
+#save .row label .target.yellow {
+    color: var(--yellow);
+}
+
+#save .row label .target.red {
+    color: var(--red);
+}
+
+#save .row :is(input[type=radio], input[type=checkbox]):first-child + label {
+    margin: 0;
+}
+
+#save .row input[type=radio] + label + label {
+    flex-grow: 1;
+}
+
+#save .row input[type=checkbox] + label + label {
+    width: 7rem;
+}
+
+#save .row input + label + label::after {
+    content: '';
+    flex-grow: 1;
+    visibility: hidden;
+}
+
+#save .row :is(input[type=number], input[type=range]) + label {
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    color: var(--inverse);
+}
+
+#save .row input[type=range] + label {
+    justify-content: flex-end;
+}
+
+#save .row input[type=number] {
+    width: 4rem;
+    flex-grow: 1;
+    height: 1.5rem;
+    padding: 0 0.25rem;
+    border-bottom: 2px solid var(--muted);
+    transition-property: opacity, border-color;
+    color: var(--inverse);
+}
+
+#save .row input[type=number]:focus-visible {
+    border-color: var(--inverse);
+}
+
+#save .row input[type=range] {
+    width: 4rem;
+    height: 1rem;
+    flex-grow: 1;
+    border-radius: 100vh;
+    background-color: var(--hover);
+    direction: rtl;
+}
+
+@supports not (-moz-appearance: none) {
+    #save .row input[type=range]::-webkit-slider-thumb {
+        width: 1rem;
+        height: 1rem;
+        border: 0.25rem solid var(--inverse);
+        box-shadow: -50vw 0 0 calc(50vw - 0.5rem) var(--inverse);
+        background-color: var(--background);
+        pointer-events: all;
+        border-radius: 50%;
+    }
+}
+
+@supports (-moz-appearance: none) {
+    #save .row input[type=range]::-moz-range-thumb {
+        width: 1rem;
+        height: 1rem;
+        border: 0.25rem solid var(--inverse);
+        box-shadow: -50vw 0 0 calc(50vw - 0.5rem) var(--inverse);
+        background-color: var(--background);
+        pointer-events: all;
+        border-radius: 50%;
+    }
+}
