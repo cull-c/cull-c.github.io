@@ -10,52 +10,38 @@ let data;
 
 
 const collage = d => {
-    let width = 0;
-    let height = 0;
-    let layers = [];
-    let l = d.length;
     let widths = d.map(i => i.width);
     let heights = d.map(i => i.height);
     let sizes = [widths, heights].map(l => Math.max(...l));
     let diffs = [widths, heights].map((l, i) => sizes[i] - Math.min(...l));
+    const m = (f, s) => layers.reduce((a, c, i) => f(c, a[0]) ? [c, i] : a, [s, 0])[1];
+    const max = () => m((c, a) => c > a, -Infinity);
+    const min = () => m((c, a) => c < a, Infinity);
     let c = diffs[0] <= diffs[1];
     let size = sizes[+!c];
 
-    let left = (c ? heights : widths).reduce((a, b) => a + b, 0);
+    let total = (c ? heights : widths).reduce((a, b) => a + b, 0);
+    let layers = new Array(Math.max(1, Math.round(Math.sqrt(total / size))));
+    if (layers.length > d.length) layers = layers.slice(0, d.length);
+    layers.fill(0);
 
-    for (let i = 0; i < l; ++i) {
-        let add = !width && !height;
-        let half = (c ? height : width) / 2;
-        if (c && height > width && left > half) add = true;
-        if (!c && width > height && left > half) add = true
-        left -= c ? d[i].height : d[i].width;
-
-        if (add) {
-            d[i].x = c ? width : 0;
-            d[i].y = c ? 0 : height;
-            c ? width += size : height += size;
-            layers.push(c ? d[i].height : d[i].width);
-            if (c) height = Math.max(height, d[i].height);
-            else width = Math.max(width, d[i].width);
-            continue;
-        }
-
-        let j = layers.reduce((a, c, i) => c < a[0] ? [c, i] : a, [Infinity, 0])[1];
+    for (let i = 0; i < d.length; ++i) {
+        let j = min();
         d[i].x = c ? j * size : layers[j];
         d[i].y = c ? layers[j] : j * size;
         layers[j] += c ? d[i].height : d[i].width;
-        if (c) height = Math.max(height, layers[j]);
-        else width = Math.max(width, layers[j]);
     }
 
+    let width = c ? size * layers.length : layers[max()];
+    let height = c ? layers[max()] : size * layers.length;
     let dim = c ? height : width;
-    for (let i = 0; i < l; ++i) {
+
+    for (let i = 0; i < d.length; ++i) {
         let j = Math.floor((c ? d[i].x : d[i].y) / size);
-        if (j < 0 || j >= layers.length) continue;
-        let o = Math.round((dim - layers[j]) / 2);
-        if (o <= 0) continue;
-        d[i].x += c ? 0 : o;
-        d[i].y += c ? o : 0;
+        let a = size - (c ? d[i].width : d[i].height) / 2;
+        let b = (dim - (layers[j] || dim)) / 2;
+        d[i].x += Math.round(c ? a : b);
+        d[i].y += Math.round(c ? b : a);
     }
 
     let canvas = document.createElement('canvas');
@@ -67,10 +53,8 @@ const collage = d => {
     ctx.fillStyle = _rgb(inv ? data.front : data.back);
     ctx.fillRect(0, 0, width, height);
 
-    for (let i = 0; i < l; ++i) {
-        let x = d[i].x + (c ? Math.floor((size - d[i].width) / 2) : 0);
-        let y = d[i].y + (c ? 0 : Math.floor((size - d[i].height) / 2));
-        ctx.putImageData(d[i], x, y);
+    for (let i = 0; i < d.length; ++i) {
+        ctx.putImageData(d[i], d[i].x, d[i].y);
     }
 
     return canvas;
