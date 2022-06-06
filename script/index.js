@@ -50,6 +50,7 @@ window.onload = () => {
 
     const set = (id, data) => {
         let dir = false;
+        let start = id === '';
         if (id === '') id = keys[0];
         let load = data || data === false;
         head(data === false ? undefined : id);
@@ -79,7 +80,7 @@ window.onload = () => {
         span.classList.add(dir ? 'left' : 'right', 'new');
         text.prepend(span);
 
-        _next(true);
+        _next(!start);
         _back(!first);
         next.className = last ? 'save' : 'next';
         wait(() => span.classList.remove('new'));
