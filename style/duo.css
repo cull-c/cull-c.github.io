@@ -3,6 +3,8 @@
     width: 0;
     flex-grow: 1;
     max-width: min-content;
+    align-self: flex-start;
+    color: var(--muted);
 }
 
 #duo .row :where(span:not(.name):first-child, span:last-child) {
@@ -15,6 +17,30 @@
     margin-right: 0;
     margin-left: 1rem;
     text-align: right;
+}
+
+#duo .row .inverse {
+    width: 0;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#duo .row .inverse input + label + label {
+    flex-shrink: 1;
+    padding-right: 0.5rem;
+}
+
+#duo .row .inverse input + label + label + label {
+    opacity: 1;
+}
+
+#duo .row button {
+    background-color: var(--inverse);
+}
+
+#duo .row button.plus {
+    margin: 0 0.5rem;
 }
 
 #duo .row .duo {

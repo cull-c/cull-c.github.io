@@ -509,6 +509,8 @@ html.static #top .name, :checked + #top-placeholder .name {
 .icon.back { --mask-image: url(/assets/icons/back.svg); }
 .icon.next { --mask-image: url(/assets/icons/next.svg); }
 .icon.general { --mask-image: url(/assets/icons/cog.svg); }
+.icon.plus { --mask-image: url(/assets/icons/plus.svg); }
+.icon.min { --mask-image: url(/assets/icons/min.svg); }
 
 
 
@@ -540,7 +542,7 @@ label.icon {
     --mask-image: url(/assets/icons/square.svg);
 }
 
-:checked + label.icon {
+:checked ~ label.icon {
     transform: scale(1, 1);
     background-color: var(--accent);
     --mask-image: url(/assets/icons/check.svg);

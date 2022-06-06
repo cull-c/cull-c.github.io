@@ -180,11 +180,6 @@
                     </div>
 
                     <div class=row>
-                        <input type=checkbox id=inverse-check />
-                        <label for=inverse-check class=icon></label>
-                        <label for=inverse-check>Inverse colors</label>
-                    </div>
-                    <div class=row>
                         <span class=name>Contrast</span>
                         <input type=range min=0 max=10 id=contrast-range />
                         <span>10</span>
@@ -196,6 +191,18 @@
                             <input type=range min=3 max=255 step=4 id=light-range />
                         </div>
                         <span>255</span>
+                    </div>
+                    <div class=row>
+                        <button class="icon min"></button>
+                        <button class="icon plus"></button>
+                        <div class=inverse>
+                            <input type=checkbox id=inverse-check />
+                            <label for=inverse-check class=icon></label>
+                            <label for=inverse-check>Inverse colors</label>
+                            <label for=inverse-check class=icon></label>
+                        </div>
+                        <button class="icon plus"></button>
+                        <button class="icon min"></button>
                     </div>
                 </div>
 

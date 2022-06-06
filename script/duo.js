@@ -47,9 +47,11 @@ const img = ([inverse, contrast, dark, light, i], _data) => {
 
 export const setup = e => {
     check(e, 'inverse');
-    const duo = e.querySelector('.row:last-child');
+    const duo = e.querySelector('.row + .row');
+    const buttons = [false, ...e.querySelectorAll('.row:last-child button')];
     range(e, ['contrast'], [4], 0, ([v], [e]) => e.nextElementSibling.innerHTML = v);
-    range(e, ['dark', 'light'], [8, 8], 0, (v, e, i, _, cb) => {
+
+    const set = (v, e, i, _, cb) => {
         i = i ? 0 : 1;
         let change = v[1] <= v[0];
         if (change && i) v[1] = v[0] + 3;
@@ -58,6 +60,44 @@ export const setup = e => {
         duo.lastElementChild.innerHTML = v[1];
         if (change) e[i].value = v[i];
         if (change) cb(i);
+    }
+
+    const click = (e, i, cb) => () => {
+        let v = e.map(e => parseInt(e.value) || 0);
+        let o = i % 2 ? 1 : -1;
+        let j = i < 2 ? 0 : 1;
+        v[j] += o * 3;
+        e[j].value = v[j];
+        set(v, e, j, 0, cb);
+        cb(j);
+    }
+
+    const hold = new Array(8).fill(NaN);
+
+    const down = (i, f) => () => {
+        hold[i * 2] = setTimeout(() => {
+            hold[i * 2 + 1] = setInterval(f, 100);
+        }, 250);
+    }
+
+    const up = i => () => {
+        clearTimeout(hold[i * 2]);
+        clearInterval(hold[i * 2 + 1]);
+    }
+
+    range(e, ['dark', 'light'], [8, 8], 0, (v, e, i, _, cb) => {
+        if (!buttons[0] && buttons.length && !buttons.shift()) {
+            buttons.forEach((b, i) => {
+                const f = click(e, i, cb);
+                b.onpointerdown = down(i, f);
+                b.onpointercancel = up(i);
+                b.onpointerout = up(i);
+                b.onpointerup = up(i);
+                b.onclick = f;
+            })
+        }
+
+        set(v, e, i, _, cb);
     })
 }
 
