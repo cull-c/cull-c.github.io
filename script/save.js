@@ -38,7 +38,7 @@ const collage = d => {
 
     for (let i = 0; i < d.length; ++i) {
         let j = Math.floor((c ? d[i].x : d[i].y) / size);
-        let a = size - (c ? d[i].width : d[i].height) / 2;
+        let a = (size - (c ? d[i].width : d[i].height)) / 2;
         let b = (dim - (layers[j] || dim)) / 2;
         d[i].x += Math.round(c ? a : b);
         d[i].y += Math.round(c ? b : a);
