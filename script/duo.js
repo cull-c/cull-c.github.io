@@ -6,7 +6,7 @@ let data;
 
 
 
-const duo = (o, d, l, c, inv) => {
+const duo = (o, d, l, c, inv, data) => {
     let r = l - d;
     if (r <= 0) return;
     let b = data.back;
@@ -36,11 +36,12 @@ const duo = (o, d, l, c, inv) => {
 }
 
 const img = ([inverse, contrast, dark, light, i], _data) => {
-    let d = (_data || data)?.imgs[i];
+    _data = _data || data;
+    let d = _data?.imgs[i];
     if (!d) return image();
     let [w, h] = [d.width, d.height];
     let o = new Uint8ClampedArray(d.data); 
-    duo(o, dark, light, contrast, inverse);
+    duo(o, dark, light, contrast, inverse, _data);
     return image(o, w, h, d);
 }
 

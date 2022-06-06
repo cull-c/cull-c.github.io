@@ -44,7 +44,8 @@ const advanced = (o, f, b, c) => {
 }
 
 const img = ([mode, red, green, blue, front, back, range, i], _data) => {
-    let d = (_data || data)?.imgs[i];
+    _data = _data || data;
+    let d = _data?.imgs[i];
     if (!d) return image();
     let [w, h] = [d.width, d.height];
     let o = new Uint8ClampedArray(d.data); 
