@@ -37,10 +37,6 @@
     white-space: initial;
 }
 
-#steps * {
-    transition: var(--transition);
-}
-
 #static-check:checked + #top-placeholder + #steps * {
     transition: none !important;
 }
@@ -61,6 +57,11 @@
     display: flex;
     flex-direction: column;
     padding-top: 1rem;
+}
+
+#info .section .top * {
+    transition-property: opacity, color;
+    transition-duration: var(--transition);
 }
 
 #info > :not(:checked) + :not(:target) .top * {
@@ -113,7 +114,9 @@
 #info .section .bot label + label {
     width: calc(100% - 2rem);
     margin-bottom: 1rem;
+    padding-left: 0.5rem;
     line-height: 1.25rem;
+    text-overflow: ellipsis;
     font-weight: initial;
     color: var(--muted);
 }
@@ -129,15 +132,15 @@
 
 
 #info .section .bot input + label {
-    height: 1.25rem;
     width: 1.5rem;
-    background-color: var(--muted);
+    height: 1.25rem;
 
     --mask-position: center;
     --mask-repeat: no-repeat;
     --mask-size: 1.5rem 1rem;
     --mask-image: url(/assets/icons/min.svg);
-    
+    background-color: var(--muted);
+
     mask-size: var(--mask-size);
     mask-image: var(--mask-image);
     mask-repeat: var(--mask-repeat);
@@ -152,9 +155,8 @@
     --mask-image: url(/assets/icons/plus.svg);
 }
 
-#info .section .bot input + label + label {
-    padding-left: 0.5rem;
-    text-overflow: ellipsis;
+#info .section .bot input ~ label {
+    transition: opacity, var(--transition);
 }
 
 #info .section .bot input:disabled + label {
