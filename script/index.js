@@ -3,14 +3,14 @@ import { wait } from './util/index.js';
 import * as upload from './upload.js';
 import * as gray from './gray.js';
 import * as color from './color.js';
-import * as mono from './mono.js';
+import * as duo from './duo.js';
 import * as save from './save.js';
 
 const state = {
     upload,
     gray,
     color,
-    mono,
+    duo,
     save
 }
 

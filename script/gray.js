@@ -59,7 +59,7 @@ const palette = (e, r, g, b) => {
     let l = dist(lab(r, g, b), dark);
     e.classList.remove('light', 'dark');
     e.style.backgroundColor = _rgb([r, g, b]);
-    e.classList.add(l < 25 ? 'dark' : 'light');
+    e.classList.add(l < 20 ? 'dark' : 'light');
 }
 
 const picker = (f, c, next, back,  cb) => {
@@ -111,7 +111,7 @@ const picker = (f, c, next, back,  cb) => {
         let [w, h] = [img.width, img.height];
         let x = Math.round(_x - (_w - w) / 2);
         let y = Math.round(_y - (_h - h) / 2);
-        if (x >= w || y >= w || x < 0 || y < 0) return set(0, 0, 0);
+        if (x >= w || y >= h || x < 0 || y < 0) return set(0, 0, 0);
         let [d, j] = [img.data, (y * w + x) * 4];
         set(d[j + 0], d[j + 1], d[j + 2]);
     }

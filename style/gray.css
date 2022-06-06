@@ -34,6 +34,7 @@
 
 #gray .rows button {
     border: 2px solid;
+    width: 5rem;
 }
 
 #gray .rows button + input[type=checkbox] ~ label {
@@ -128,10 +129,6 @@
     justify-content: center;
 }
 
-#gray .picker .color {
-    opacity: var(--opacity);
-}
-
 #gray .picker .color.light * {
     color: var(--background);
 }
@@ -160,5 +157,6 @@
 #gray .picker button {
     width: 6rem;
     height: 100%;
+    font-weight: 900;
     color: var(--inverse);
 }

@@ -2,18 +2,19 @@
 <html lang=en>
     <head>
         <meta charset=UTF-8>
-        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <link rel=manifest href=/manifest.json>
         <link rel=preload href=/assets/fonts/bold.ttf as=font type=font/ttf crossorigin>
         <link rel=preload href=/assets/fonts/medium.ttf as=font type=font/ttf crossorigin>
         <link rel=preload href=/assets/fonts/heavy.ttf as=font type=font/ttf crossorigin>
-        <link rel=icon href=assets/heavy.ico>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <link rel=icon href=assets/ico/heavy.ico>
         <title>ULL</title>
 
         <link rel=stylesheet href=style/index.css>
         <link rel=stylesheet href=style/upload.css>
         <link rel=stylesheet href=style/gray.css>
         <link rel=stylesheet href=style/color.css>
-        <link rel=stylesheet href=style/mono.css>
+        <link rel=stylesheet href=style/duo.css>
         <link rel=stylesheet href=style/save.css>
         <script type=module src=script/index.js defer></script>
     </head>
@@ -30,7 +31,7 @@
             <div id=top>
                 <span class=name><span>C</span>ULL</span>
                 <div class=link>
-                    <a target=_blank href=/ >
+                    <a target=_blank href=/info.html>
                         <span>Information</span>
                         <div class="icon info"></div>
                     </a>
@@ -44,7 +45,11 @@
                 <div id=upload class=step>
                     <div id=images></div>
                     <div id=message>
-                        <span></span>
+                        <span>Create <span class=accent>duo</span><span class=inverse>chromatic</span> images given a wide range of options to easily and efficiently seperate colors in 5 short steps, suited for both simple and advanced use cases</span>
+                        <span>Any amount of images can be uploaded but all will have the same settings applied, only images with similar color palettes should be grouped for best effect</span>
+                        <span>Once images have been uploaded no further explanation will be given, although most options are self-explanatory and progress isnt easily lost certain effects might be confusing and some features can be missed</span>
+                        <span>To ensure the full experience all information relating to the usage and working of each step is available <a target=_blank href=/info.html class=inverse>top right</a> along with some minor tips and warnings, a brief review is recommended before more extensive usage</span>
+                        <span><span>Make it</span> <span class=inverse>☆</span> <span class=accent>pretty</span></span>
                     </div>
                     <input type=file accept="image/*" multiple id=files />
                     <label for=files><div class="icon upload"></div></label>
@@ -83,7 +88,7 @@
                             <div class=row>
                                 <input value=2 name=gray type=radio id=advanced-radio />
                                 <label for=advanced-radio class=icon></label>
-                                <label for=advanced-radio>Target custom</label>
+                                <label for=advanced-radio>Custom</label>
                                 <button id=front class=light>FRONT</button>
                                 <button id=back class=dark>BACK</button>
                                 <input type=checkbox id=range-check />
@@ -118,7 +123,6 @@
 
 
                 <div id=color class=step>
-                    <div class=sep></div>
                     <span class=color>
                         <span>Background</span>
                         <span>#</span>
@@ -164,7 +168,7 @@
 
 
 
-                <div id=mono class=step>
+                <div id=duo class=step>
                     <div class=preview>
                         <canvas></canvas>
                         <div class=scroll>
@@ -197,7 +201,6 @@
 
 
                 <div id=save class=step>
-                    <div class=sep></div>
                     <div class=row>
                         <input value=0 name=output type=radio id=delay-radio />
                         <label for=delay-radio class=icon></label>

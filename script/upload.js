@@ -1,7 +1,7 @@
 import { compute, image, benchmark } from './util/index.js';
 import * as gray from './gray.js';
 import * as color from './color.js';
-import * as mono from './mono.js';
+import * as duo from './duo.js';
 import * as save from './save.js';
 
 let state;
@@ -27,10 +27,16 @@ export const load = (e, next) => {
         state = false;
         gray.clear();
         color.clear();
-        mono.clear();
+        duo.clear();
         save.clear();
 
-        if (!l) return next(!(text[0] = empty));
+        if (!l) {
+            text[0] = empty;
+            next(true);
+            next(false);
+            return;
+        }
+
         text[0] = `${l} Image${l === 1 ? '' : 's'}`;
 
         const onload = () => {

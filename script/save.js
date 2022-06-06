@@ -3,7 +3,7 @@ import { _rgb, compute, blob, png, zip, download } from './util/index.js';
 import * as upload from './upload.js';
 import * as gray from './gray.js';
 import * as color from './color.js';
-import * as mono from './mono.js';
+import * as duo from './duo.js';
 
 let data;
 
@@ -21,10 +21,14 @@ const collage = d => {
     let c = diffs[0] <= diffs[1];
     let size = sizes[+!c];
 
+    let left = (c ? heights : widths).reduce((a, b) => a + b, 0);
+
     for (let i = 0; i < l; ++i) {
         let add = !width && !height;
-        if (c && height >= width + size) add = true;
-        else if (width >= height + size) add = true
+        let half = (c ? height : width) / 2;
+        if (c && height > width && left > half) add = true;
+        if (!c && width > height && left > half) add = true
+        left -= c ? d[i].height : d[i].width;
 
         if (add) {
             d[i].x = c ? width : 0;
@@ -143,14 +147,14 @@ const processing = (d, stats) => {
 const state = () => ({
     gray: snap('gray'),
     color: snap('color'),
-    mono: snap('mono')
+    duo: snap('duo')
 })
 
 const save = async (d, o) => {
 
     if (o === 1) {
         for (let i = 0; i < d.length; ++i) {
-            let name = png(d[i].filename);
+            let name = png(d[i].filename, 'cull');
             let file = await blob(d[i]);
             download(file, name);
         }
@@ -254,7 +258,7 @@ export const process = (data, save) => {
         let p = upload.process(scale);
         if (p) p = gray.process(p, state.gray);
         if (p) p = color.process(p, state.color);
-        if (p) p = mono.process(p, state.mono);
+        if (p) p = duo.process(p, state.duo);
         imgs.push(...p?.imgs || []);
     })
 

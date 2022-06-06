@@ -116,11 +116,12 @@ const blob = img => {
     })
 }
 
-const png = s => {
-    if (!s) s = 'image';
-    let i = s.lastIndexOf('.');
-    if (i > 0) s = s.slice(0, i);
-    return s + '.png';
+const png = (f, s) => {
+    if (!f) f = 'image';
+    let i = f.lastIndexOf('.');
+    if (i > 0) f = f.slice(0, i);
+    s = s ? `-${s}` : '';
+    return f + s + '.png';
 }
 
 const zip = async d => {
@@ -130,12 +131,7 @@ const zip = async d => {
     blobs.forEach((blob, i) => {
         let n = 0;
         let s = png(d[i]?.filename);
-        const name = () => {
-            let f = s.slice(0, -4);
-            let c = n ? `-${n}` : '';
-            let e = s.slice(-4);
-            return f + c + e;
-        }
+        const name = () => png(s, n);
         while (zip.file(name())) ++n;
         zip.file(name(), blob, { binary: true });
     })

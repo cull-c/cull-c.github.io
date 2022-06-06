@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset=UTF-8>
+        <link rel=manifest href=/manifest.json>
+        <link rel=preload href=/assets/fonts/bold.ttf as=font type=font/ttf crossorigin>
+        <link rel=preload href=/assets/fonts/medium.ttf as=font type=font/ttf crossorigin>
+        <link rel=preload href=/assets/fonts/heavy.ttf as=font type=font/ttf crossorigin>
+        <meta name=viewport content="width=device-width, initial-scale=1.0">
+        <link rel=icon href=assets/ico/heavy.ico>
+        <title>ULL</title>
+
+        <link rel=stylesheet href=style/index.css>
+        <link rel=stylesheet href=style/info.css>
+    </head>
+
+    <body>
+        <div id=main>
+            <div id=top-placeholder></div>
+
+            <div id=steps>
+
+                <div id=info>
+
+
+
+                    <div class=section id=information>
+                        <div class=top>
+                            <div class="icon info"></div>
+                            <span>Information</span>
+                        </div>
+                        <div class=bot>
+                            <span>The working and usage of each step is explained below with some important general information first, the icons at the top can be used for navigation</span>
+                            <span>Information in each step is listed in order of importance and gets more detailed towards the end, but a quick review of the top few items in each step is more than sufficient for the full experience</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class=section id=general>
+                        <div class=top>
+                            <div class="icon general"></div>
+                            <span>General</span>
+                        </div>
+                        <div class=bot>
+                            <span>All animations can be disabled by clicking the icon top left</span>
+                            <span>All settings are automatically saved in the URL and restored when reloading or revisiting, they are also kept while navigating the steps in any way</span>
+                            <span>All steps can be revisited at any point and can be freely changed, subsequent steps will then re-apply their settings to the new data</span>
+                            <span>The website can be added to your home page and used as an application</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class=section id=upload>
+                        <div class=top>
+                            <div class="icon upload"></div>
+                            <span>Upload</span>
+                        </div>
+                        <div class=bot>
+                            <span>All image types are supported and all transparency is kept</span>
+                            <span>New images can be uploaded at any point replacing the old ones</span>
+                            <span>The website works entirely offline and no literal file uploading or downloading is happening</span>
+                            <span>Uploaded images are automatically scaled to show the previews and can be scaled as desired once saving them</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class=section id=gray>
+                        <div class=top>
+                            <div class="icon gray"></div>
+                            <span>Grayscale</span>
+                        </div>
+                        <div class=bot>
+                            <span>Color information is lost in this step, for the best output the foreground and background should stay clearly seperated</span>
+                            <span>The default algorithm is often sufficient, and if you want to focus the red/green/blue colors more the second option should be enough</span>
+                            <span>The last option is for extreme use cases, trying to seperate similar colors as background and foreground, or can just be fun to play around with</span>
+                            <span>To pick a color for this option you can click and drag on the images above or input the HEX value directly in the color bar</span>
+                            <span>The grayscale is based on each colors distance to both the chosen foreground and background, the closer to the foreground the lighter, the closer to the background the darker</span>
+                            <span>The WRAP/CUT option applies to colors distant from both the foreground and background, when wrapping them they fade to a gray, when cutting them they are fully white/black, based on the closest color</span>
+                            <span>Color distance isnt an objective measure, <a target=_blank href="http://zschuessler.github.io/DeltaE/learn">Delta E 94</a> is used to estimate the perceived color distance, there's a better algorithm available but it's much slower</span>
+                            <span>When the foreground and background are very close to each other almost all other colors will either be wrapped or cut, leading to very extreme results</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class=section id=color>
+                        <div class=top>
+                            <div class="icon color"></div>
+                            <span>Palette</span>
+                        </div>
+                        <div class=bot>
+                            <span>The foreground and background can be swapped at will in the next step</span>
+                            <span>The color sliders are HSV values, saturation makes it lighter, value makes it darker</span>
+                            <span>To input a precise color the HEX value top right can be used for input, conversion to and from HSV leads to slight imprecisions but it shouldn't be perceivable in the output</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class=section id=duo>
+                        <div class=top>
+                            <div class="icon duo"></div>
+                            <span>Duochrome</span>
+                        </div>
+                        <div class=bot>
+                            <span>Inverse effectively swaps the chosen foreground and background colors</span>
+                            <span>The double bottom slider respectively refers to the dark and light of the output, increasing dark makes the background more prominent while increasing light makes the foreground more prominent</span>
+                            <span>Contrast applies a <a target=_blank href="https://javascript.info/bezier-curve">cubic bezier</a> to the transition from background to foreground, this often has a similar effect to bringing both dark and light closer together, although there is a subtle difference</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class=section id=save>
+                        <div class=top>
+                            <div class="icon save"></div>
+                            <span>Output</span>
+                        </div>
+                        <div class=bot>
+                            <span>All delayed saved are permanently lost when reloading or uploading new images</span>
+                            <span>Delayed saves will be downloaded along with the files of the next save but will keep the settings applied when they were saved, excluding the scaling settings</span>
+                            <span>You cannot press back while delayed download is selected to prevent forgetting to save a delayed download, you will automatically go back once you save, or you can select one of the other options to go back, you can also always use the top icons for navigation</span>
+
+                            <span>Collages generate based on similar widths or heights among the images, for a better collage scaling all images to the same width or height is recommended</span>
+                            <span>The longer the estimated processing time the more memory used and the larger the size of the file(s) downloaded, if this is too much the process might fail entirely</span>
+                            <span>The estimated processing time is based on the performance with the previews and gets less accurate the more the actual output sizes differ from those previewed, it does not include downloading time</span>
+                        </div>
+                    </div>
+
+
+
+
+                    <div id=top class=float>
+                        <a class=name id=static href=#static><span>C</span>ULL</a>
+                        <div class=heads>
+                            <div class="head information">
+                                <a class=box href=#information>
+                                    <div class="icon info"></div>
+                                </a>
+                            </div>
+                            <div class="head general">
+                                <a class=box href=#general>
+                                    <div class="icon general"></div>
+                                </a>
+                            </div>
+                            <div class="head upload">
+                                <a class=box href=#upload>
+                                    <div class="icon upload"></div>
+                                </a>
+                            </div>
+                            <div class="head gray">
+                                <a class=box href=#gray>
+                                    <div class="icon gray"></div>
+                                </a>
+                            </div>
+                            <div class="head color">
+                                <a class=box href=#color>
+                                    <div class="icon color"></div>
+                                </a>
+                            </div>
+                            <div class="head duo">
+                                <a class=box href=#duo>
+                                    <div class="icon duo"></div>
+                                </a>
+                            </div>
+                            <div class="head save">
+                                <a class=box href=#save>
+                                    <div class="icon save"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id=bot>
+                <a class=back href=/ >
+                    <div class=icon></div>
+                    <span>Back</span>
+                </a>
+                <div class=text>
+                    <span>Information</span>
+                </div>
+                <button class=next disabled>
+                    <span>Next</span>
+                    <div class=icon></div>
+                    <span>Save</span>
+                </button>
+            </div>
+        </div>
+    </body>
+</html>
