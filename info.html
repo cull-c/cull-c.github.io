@@ -16,7 +16,10 @@
 
     <body>
         <div id=main>
-            <div id=top-placeholder></div>
+            <input type=checkbox id=static-check />
+            <div id=top-placeholder>
+                <label class=name for=static-check><span>C</span>ULL</label>
+            </div>
 
             <div id=steps>
 
@@ -24,117 +27,251 @@
 
 
 
+                    <input type=checkbox id=info-check />
                     <div class=section id=information>
-                        <div class=top>
+                        <label class=top for=info-check>
                             <div class="icon info"></div>
                             <span>Information</span>
-                        </div>
+                        </label>
+                        <a class=top href=#>
+                            <div class="icon info"></div>
+                            <span>Information</span>
+                        </a>
                         <div class=bot>
-                            <span>The working and usage of each step is explained below with some important general information first, the icons at the top can be used for navigation</span>
-                            <span>Information in each step is listed in order of importance and gets more detailed towards the end, but a quick review of the top few items in each step is more than sufficient for the full experience</span>
+
+<input type=checkbox id=aa disabled /><label for=aa></label><label for=aa>
+    Information in each section is listed in order of importance, items closed by default are only meant for those interested
+</label>
+
+<input type=checkbox id=ac disabled /><label for=ac></label><label for=ac>
+    The titles can be clicked to open and close sections
+</label>
+
+<input type=checkbox id=ab disabled /><label for=ab></label><label for=ab>
+    The icons at the top can be used for navigation
+</label>
+
                         </div>
                     </div>
 
-
-
+                    <input type=checkbox id=general-check />
                     <div class=section id=general>
-                        <div class=top>
+                        <label class=top for=general-check>
                             <div class="icon general"></div>
                             <span>General</span>
-                        </div>
+                        </label>
+                        <a class=top href=#>
+                            <div class="icon general"></div>
+                            <span>General</span>
+                        </a>
                         <div class=bot>
-                            <span>All animations can be disabled by clicking the icon top left</span>
-                            <span>All settings are automatically saved in the URL and restored when reloading or revisiting, they are also kept while navigating the steps in any way</span>
-                            <span>All steps can be revisited at any point and can be freely changed, subsequent steps will then re-apply their settings to the new data</span>
-                            <span>The website can be added to your home page and used as an application</span>
+
+<input type=checkbox id=ba disabled /><label for=ba></label><label for=ba>
+    All animations can be disabled by clicking the icon top left
+</label>
+
+<input type=checkbox id=bb /><label for=bb></label><label for=bb>
+    All settings are automatically saved in the URL and restored when reloading or revisiting the page, they are kept while navigating the steps in any way
+</label>
+
+<input type=checkbox id=bc /><label for=bc></label><label for=bc>
+    All steps can be revisited at any point and can be freely changed, subsequent steps will then re-apply their settings to the new data
+</label>
+
+<input type=checkbox id=bd checked /><label for=bd></label><label for=bd>
+    All settings can be reset by clearing the characters after the ? in the URL and reloading, or by revisiting this link <a href="https://cull-c.github.io">https://cull-c.github.io</a>
+</label>
+
+<input type=checkbox id=be checked /><label for=be></label><label for=be>
+    To share or permanently save all settings you can copy the URL including all characters after the ?, and visit again at any time using that link
+</label>
+
+<input type=checkbox id=bf checked /><label for=bf></label><label for=bf>
+    The website can be added to your home screen and used offline like an application through a <a href="https://developer.mozilla.org/en-US/docs/Web/Manifest">Web app manifest</a>, this is supported by most major browsers, excluding Safari
+</label>
+
                         </div>
                     </div>
 
-
-
+                    <input type=checkbox id=upload-check />
                     <div class=section id=upload>
-                        <div class=top>
+                        <label class=top for=upload-check>
                             <div class="icon upload"></div>
                             <span>Upload</span>
-                        </div>
+                        </label>
+                        <a class=top href=#>
+                            <div class="icon upload"></div>
+                            <span>Upload</span>
+                        </a>
                         <div class=bot>
-                            <span>All image types are supported and all transparency is kept</span>
-                            <span>New images can be uploaded at any point replacing the old ones</span>
-                            <span>The website works entirely offline and no literal file uploading or downloading is happening</span>
-                            <span>Uploaded images are automatically scaled to show the previews and can be scaled as desired once saving them</span>
+
+<input type=checkbox id=ca disabled /><label for=ca></label><label for=ca>
+    Any amount of images can be uploaded but all will have the same settings applied, only images with similar color palettes should be grouped for best effect
+</label>
+
+<input type=checkbox id=cb disabled /><label for=cb></label><label for=cb>
+    Images always keep transparency throughout each step
+</label>
+
+<input type=checkbox id=cc disabled /><label for=cc></label><label for=cc>
+    New images can be uploaded at any point, replacing all previously uploaded images
+</label>
+
+<input type=checkbox id=cd checked /><label for=cd></label><label for=cd>
+    The website works entirely offline and no literal file uploading or downloading is happening at any point
+</label>
+
+<input type=checkbox id=ce checked /><label for=ce></label><label for=ce>
+    Uploaded images are automatically scaled to show the previews and can be scaled as desired once saving them
+</label>
+
                         </div>
                     </div>
 
-
-
+                    <input type=checkbox id=gray-check />
                     <div class=section id=gray>
-                        <div class=top>
+                        <label class=top for=gray-check>
                             <div class="icon gray"></div>
                             <span>Grayscale</span>
-                        </div>
+                        </label>
+                        <a class=top href=#>
+                            <div class="icon gray"></div>
+                            <span>Grayscale</span>
+                        </a>
                         <div class=bot>
-                            <span>Color information is lost in this step, for the best output the foreground and background should stay clearly seperated</span>
-                            <span>The default algorithm is often sufficient, and if you want to focus the red/green/blue colors more the second option should be enough</span>
-                            <span>The last option is for extreme use cases, trying to seperate similar colors as background and foreground, or can just be fun to play around with</span>
-                            <span>To pick a color for this option you can click and drag on the images above or input the HEX value directly in the color bar</span>
-                            <span>The grayscale is based on each colors distance to both the chosen foreground and background, the closer to the foreground the lighter, the closer to the background the darker</span>
-                            <span>The WRAP/CUT option applies to colors distant from both the foreground and background, when wrapping them they fade to a gray, when cutting them they are fully white/black, based on the closest color</span>
-                            <span>Color distance isnt an objective measure, <a target=_blank href="http://zschuessler.github.io/DeltaE/learn">Delta E 94</a> is used to estimate the perceived color distance, there's a better algorithm available but it's much slower</span>
-                            <span>When the foreground and background are very close to each other almost all other colors will either be wrapped or cut, leading to very extreme results</span>
+
+<input type=checkbox id=da disabled /><label for=da></label><label for=da>
+    Color information is lost in this step, for the best output the foreground and background should stay clearly seperated
+</label>
+
+<input type=checkbox id=db /><label for=db></label><label for=db>
+    The default algorithm is often sufficient, and if you want to focus the red/green/blue colors more the second option is often be enough
+</label>
+
+<input type=checkbox id=dc checked /><label for=dc></label><label for=dc>
+    The last option is for extreme use cases, trying to seperate similar colors as background and foreground, or can just be fun to play around with
+</label>
+
+<input type=checkbox id=dd checked /><label for=dd></label><label for=dd>
+    To pick a color for this option you can click and drag on the images above or input the HEX value directly in the color bar
+</label>
+
+<input type=checkbox id=de checked /><label for=de></label><label for=de>
+    The grayscale is based on each colors distance to both the foreground and background, the closer to the foreground the lighter, the closer to the background the darker
+</label>
+
+<input type=checkbox id=df checked /><label for=df></label><label for=df>
+    The wrap/cut option applies to colors distant from both the foreground and background, when wrapping them they fade to a gray, when cutting them they turn fully white/black, based on the closest color
+</label>
+
+<input type=checkbox id=dg checked /><label for=dg></label><label for=dg>
+    When the foreground and background are very close to each other almost all other colors will either be wrapped or cut, leading to very extreme results
+</label>
+
+<input type=checkbox id=dh checked /><label for=dh></label><label for=dh>
+    Color distance isn't an objective measure, <a target=_blank href="http://zschuessler.github.io/DeltaE/learn">Delta E 94</a> is used to estimate the perceived color distance, there's a better algorithm wich will more often give an accurate distance but it's much slower
+</label>
+
                         </div>
                     </div>
 
-
-
+                    <input type=checkbox id=color-check />
                     <div class=section id=color>
-                        <div class=top>
+                        <label class=top for=color-check>
                             <div class="icon color"></div>
                             <span>Palette</span>
-                        </div>
+                        </label>
+                        <a class=top href=#>
+                            <div class="icon color"></div>
+                            <span>Palette</span>
+                        </a>
                         <div class=bot>
-                            <span>The foreground and background can be swapped at will in the next step</span>
-                            <span>The color sliders are HSV values, saturation makes it lighter, value makes it darker</span>
-                            <span>To input a precise color the HEX value top right can be used for input, conversion to and from HSV leads to slight imprecisions but it shouldn't be perceivable in the output</span>
+
+<input type=checkbox id=eb /><label for=eb></label><label for=eb>
+    The color sliders are HSV values, which i think to be the most intuitive way to find colors
+</label>
+
+<input type=checkbox id=ec checked /><label for=ec></label><label for=ec>
+    To input a precise color the HEX value top right can be used for input, conversion to and from HSV leads to slight imprecisions but these shouldn't be perceivable in the output
+</label>
+
                         </div>
                     </div>
 
-
-
+                    <input type=checkbox id=duo-check />
                     <div class=section id=duo>
-                        <div class=top>
+                        <label class=top for=duo-check>
                             <div class="icon duo"></div>
                             <span>Duochrome</span>
-                        </div>
+                        </label>
+                        <a class=top href=#>
+                            <div class="icon duo"></div>
+                            <span>Duochrome</span>
+                        </a>
                         <div class=bot>
-                            <span>Inverse effectively swaps the chosen foreground and background colors</span>
-                            <span>The double bottom slider respectively refers to the dark and light of the output, increasing dark makes the background more prominent while increasing light makes the foreground more prominent</span>
-                            <span>Contrast applies a <a target=_blank href="https://javascript.info/bezier-curve">cubic bezier</a> to the transition from background to foreground, this often has a similar effect to bringing both dark and light closer together, although there is a subtle difference</span>
+
+<input type=checkbox id=fa /><label for=fa></label><label for=fa>
+    Inverse effectively swaps the chosen foreground and background colors
+</label>
+
+<input type=checkbox id=fb /><label for=fb></label><label for=fb>
+    The double bottom slider is used to adjust the perceived dark and light of the grayscale, colors lower than dark are background, colors higher than light are foreground, and colors in between are transitioned
+</label>
+
+<input type=checkbox id=fc checked /><label for=fc></label><label for=fc>
+    Contrast applies a <a target=_blank href="https://javascript.info/bezier-curve">cubic bezier</a> to the transition from background to foreground, this often has a similar effect to bringing both dark and light closer together, although there is a subtle difference
+</label>
+
+<input type=checkbox id=fd checked /><label for=fd></label><label for=fd>
+    I do not know if there are any existing methods of achieving a duochromatic image, i have never looked it up and don't intend to do so now, i arrived at this method by intuition and experimentation
+</label>
+
                         </div>
                     </div>
 
-
-
+                    <input type=checkbox id=save-check />
                     <div class=section id=save>
-                        <div class=top>
+                        <label class=top for=save-check>
                             <div class="icon save"></div>
                             <span>Output</span>
-                        </div>
+                        </label>
+                        <a class=top href=#>
+                            <div class="icon save"></div>
+                            <span>Output</span>
+                        </a>
                         <div class=bot>
-                            <span>All delayed saved are permanently lost when reloading or uploading new images</span>
-                            <span>Delayed saves will be downloaded along with the files of the next save but will keep the settings applied when they were saved, excluding the scaling settings</span>
-                            <span>You cannot press back while delayed download is selected to prevent forgetting to save a delayed download, you will automatically go back once you save, or you can select one of the other options to go back, you can also always use the top icons for navigation</span>
 
-                            <span>Collages generate based on similar widths or heights among the images, for a better collage scaling all images to the same width or height is recommended</span>
-                            <span>The longer the estimated processing time the more memory used and the larger the size of the file(s) downloaded, if this is too much the process might fail entirely</span>
-                            <span>The estimated processing time is based on the performance with the previews and gets less accurate the more the actual output sizes differ from those previewed, it does not include downloading time</span>
+<input type=checkbox id=ga disabled /><label for=ga></label><label for=ga>
+    All delayed saved are permanently lost when reloading or uploading new images
+</label>
+
+<input type=checkbox id=gb disabled /><label for=gb></label><label for=gb>
+    Delayed saves will be downloaded along with the files of the next save but will keep the settings applied when they were saved, excluding the scaling settings
+</label>
+
+<input type=checkbox id=gc checked /><label for=gc></label><label for=gc>
+    You cannot press back while delayed download is selected to prevent forgetting to save, you will automatically go back once you save or you can select one of the other options to go back, you can also always use the top icons for navigation
+</label>
+
+<input type=checkbox id=gd /><label for=gd></label><label for=gd>
+    Collages are generated based on similar widths/heights among the images, for a better collage scaling all images to the same width/height is recommended
+</label>
+
+<input type=checkbox id=ge /><label for=ge></label><label for=ge>
+    The longer the estimated processing time the larger the memory that needs to be used, if this is too much the process might fail entirely
+</label>
+
+<input type=checkbox id=gf checked /><label for=gf></label><label for=gf>
+    The estimated processing time is based on previous performance and gets less accurate the more the actual output sizes differ from those previewed, it does not include the download time
+</label>
+
                         </div>
                     </div>
-
 
 
 
                     <div id=top class=float>
-                        <a class=name id=static href=#static><span>C</span>ULL</a>
+                        <span class=name><span>C</span>ULL</span>
                         <div class=heads>
                             <div class="head information">
                                 <a class=box href=#information>

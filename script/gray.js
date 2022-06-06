@@ -135,7 +135,7 @@ const picker = (f, c, next, back,  cb) => {
 }
 
 export const setup = (e, n, b) => {
-    radio(e, 'gray', 2);
+    const value = radio(e, 'gray', 2);
     check(e, 'red', 'green', 'blue');
     const val = e => parseInt(e.color) || 0;
     const set = (v, e) => (e.color = v, palette(e, ..._col(v)));
@@ -144,6 +144,7 @@ export const setup = (e, n, b) => {
         e.onclick = () => picker(s, v(), n, b, (r, g, b) => {
             let v = `${_col(r, g, b)}`;
             e.color = v;
+            value(2);
             cb();
         })
     }

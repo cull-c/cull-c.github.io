@@ -15,17 +15,21 @@ export const setup = e => {
     const hex = t.map(s => e.querySelector(`#${s}-hex`));
 
     const color = (v, e, i, j, cb) => {
-        if (i <= 0) {
-            let c = _rgb(rgb(v[0], 1, 1));
-            e[1].style.setProperty('--c', c);
-            e[2].style.setProperty('--c', c);
-        }
-
-        if (!!i) {
+        if (i !== 0) {
             const p = v => `${v}%`;
             let [_, s, l] = hsl(0, v[1], v[2]);
             e[0].style.setProperty('--s', p(s));
             e[0].style.setProperty('--l', p(l));
+        }
+
+        if (i !== 1) {
+            let c = _rgb(rgb(v[0], 100, v[2]));
+            e[1].style.setProperty('--c', c);
+        }
+
+        if (i !== 2) {
+            let c = _rgb(rgb(v[0], v[1], 100));
+            e[2].style.setProperty('--c', c);
         }
 
         let c = rgb(v[0], v[1], v[2]);

@@ -1,15 +1,27 @@
 #color {
     overflow-y: auto;
+    scroll-snap-type: y proximity;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    margin-top: 1rem;
 }
 
 #color .preview {
-    min-height: 5rem;
-    margin-bottom: 0 !important;
+    min-height: 10rem;
     border-radius: var(--radius);
 
     --back: black;
     --front: white;
     background: linear-gradient(to right, var(--back) 10%, var(--front) 90%);
+}
+
+#color > .sep:last-child {
+    height: 1rem;
+    scroll-snap-align: end;
+}
+
+#color > .color:focus-within ~ .sep:last-child {
+    scroll-snap-align: unset !important;
 }
 
 #color :is(.row,  .row input[type=range]) {
@@ -117,13 +129,6 @@
     color: inherit;
 }
 
-#color > .color span ~ * {
-    color: var(--muted);
-    opacity: var(--opacity);
-    font-size: 1rem;
-    height: 1.5rem;
-}
-
 #color > .color span + span {
     padding: 0 0.25rem;
     margin-top: 6px;
@@ -134,5 +139,19 @@
     margin-top: 4px;
     text-align: center;
     border-bottom: 2px solid var(--muted);
+}
+
+#color > .color span ~ * {
+    height: 1.5rem;
+    font-size: 1rem;
+    color: var(--muted);
     opacity: var(--opacity);
+    transition-duration: var(--transition);
+    transition-property: opacity, color, border-color;
+}
+
+#color > .color:focus-within span ~ * {
+    border-color: var(--inverse);
+    color: var(--inverse);
+    opacity: 1;
 }

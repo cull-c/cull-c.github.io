@@ -50,15 +50,18 @@ window.onload = () => {
 
     const set = (id, data) => {
         let dir = false;
-        if (!id) id = keys[0];
+        if (id === '') id = keys[0];
         let load = data || data === false;
         head(data === false ? undefined : id);
+        if (id === undefined) id = keys[0];
+
         for (let i = 0; i < steps.childElementCount; ++i) {
             let e = steps.children[i];
             if (e.id === id) {
                 e.classList.add('open');
                 e.classList.remove('disabled');
-                if (load) wait(() => state[id]?.load(e, _next, _back, data));
+                let d = data === false ? set : data;
+                if (load) wait(() => state[id]?.load(e, _next, _back, d));
                 continue;
             }
 
@@ -76,15 +79,14 @@ window.onload = () => {
         span.classList.add(dir ? 'left' : 'right', 'new');
         text.prepend(span);
 
+        _next(true);
         _back(!first);
-        _next(load ? !!data : 1);
         next.className = last ? 'save' : 'next';
         wait(() => span.classList.remove('new'));
         return true;
     }
 
     const _next = state => {
-        if (state === true && step() <= 0) set(keys[0]);
         if (state) next.removeAttribute('disabled');
         else next.setAttribute('disabled', '');
         next.classList.remove('load');

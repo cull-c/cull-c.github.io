@@ -134,20 +134,20 @@ html.static * {
     margin: 1rem;
 }
 
-#top .name {
+:is(#top .name, #top-placeholder .name) {
     font-size: 1.5rem;
     color: var(--accent);
     padding-right: 1rem;
     font-weight: initial;
 }
 
-#top .name span {
+:is(#top .name, #top-placeholder .name) span {
     font-weight: 900;
     font-size: inherit;
     color: var(--accent);
 }
 
-html.static #top .name, #top .name:target {
+html.static #top .name, :checked + #top-placeholder .name {
     color: var(--hover);
 }
 

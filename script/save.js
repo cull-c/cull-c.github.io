@@ -124,23 +124,36 @@ const _scaling = ([o, t, w, h, s, scale, width, height], stats, _w, _h) => {
 
 const processing = (d, stats) => {
     let { imgs, states, load, process, _w, _h } = data || {};
-    if (!load || !process || !_w || !_h) return -1;
+    if (!load || !process || !_w || !_h) return NaN;
     if (!imgs?.length || !states) return 0;
     states = states.length + 1;
     imgs = imgs.length;
-    let s = 0;
+    let i = 0;
+    let p = 0;
+    let o = 0;
     if (!d[0]) return 0;
-    for (let i = 0; i < imgs; ++i) {
-        let img = data.imgs[i];
+    for (let j = 0; j < imgs; ++j) {
+        let img = data.imgs[j];
         let w = img.naturalWidth;
         let h = img.naturalHeight;
-        let _s = _scaling(d, stats, w, h);
-        s += w * _s * h * _s;
+        let s = _scaling(d, stats, w, h);
+        p += img.width * img.height;
+        o += w * s * h * s;
+        i += w * h;
     }
-    s *= states;
-    let p = _w * _h * imgs;
-    let t = load + process * 3;
-    t = Math.floor(t * (s / p));
+
+    if (i <= 0) return NaN;
+    if (p <= 0) return NaN;
+    if (o <= 0) return NaN;
+
+    o *= states;
+    process = process * 2;
+    let save = process;
+
+    let t = 0;
+    t += load * (o / i);
+    t += process * (o / p);
+    t += save * (o / p);
     return t / 1000;
 }
 
@@ -211,10 +224,10 @@ export const load = (e, next, back, d) => {
 
         let o = d[0];
         let t = processing(d, stats);
-        let j = Math.max(i(t), o === 1 ? i(l) : -1);
+        let j = isNaN(t) ? 2 : Math.max(i(t), o === 1 ? i(l) : -1);
         let [ms, s, m] = [Math.floor((t % 1) * 1000), Math.floor(t % 60), Math.floor(t / 60)];
         let time = m > 0 ? `${m}m ${s}s` : s >= 1 ? `${s}s` : `${ms}ms`;
-        estimate.innerHTML = t > 0 ? time : t < 0 ? 'Unknown' : 'None';
+        estimate.innerHTML = isNaN(t)? 'Unknown' : t <= 0 ? 'None' : time;
         estimate.className = 'estimate ' + (colors[j] || '');
         if (j > 0) OK.classList.remove('OK');
 

@@ -123,13 +123,15 @@ const link = (el, q, n, e, v, s) => {
 }
 
 const radio = (e, s, n, r) => {
+    let event;
     let value = 0;
     const q = `input[type=radio][name=${s}]`;
     const radio = [...e.querySelectorAll(q)];
-    const ev = ev => radio.map(s => s.onclick = ev);
+    const ev = ev => (event = v => (set(v), ev()), radio.map(s => s.onclick = ev));
     const val = () => (v => r && v === value ? 0 : v)(parseInt(radio.find(s => s.checked)?.value) || 0);
     const set = v => (value = v, radio.forEach(s => s.checked = s.value === `${v || 0}`));
     link(e, '', n, ev, val, set);
+    return event;
 }
 
 const check = (e, ...s) => {

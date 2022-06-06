@@ -150,6 +150,15 @@
     margin-right: 1rem;
 }
 
+#gray .picker .color * {
+    opacity: var(--opacity);
+    transition: opacity var(--transition);
+}
+
+#gray .picker .color:focus-within * {
+    opacity: 1;
+}
+
 #gray .picker .row:last-child {
     justify-content: space-evenly;
 }

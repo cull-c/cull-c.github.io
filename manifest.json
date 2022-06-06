@@ -1,24 +1,13 @@
 {
     "name": "ULL",
-    "start_url": ".",
-    "display": "fullscreen",
+    "display": "standalone",
     "orientation": "portrait",
     "background_color": "#101010",
     "theme_color": "#a18d75",
 
     "icons": [
         {
-            "src": "/assets/C/heavy.svg",
-            "sizes": "any",
-            "type": "image/svg+xml"
-        },
-        {
-            "src": "/assets/ico/heavy.ico",
-            "sizes": "16x16 24x24 32x32 48x48 64x64",
-            "type": "image/vnd"
-        },
-        {
-            "src": "/assets/png/heavy.png",
+            "src": "/assets/ico/heavy.png",
             "sizes": "72x72",
             "type": "image/png"
         }

@@ -11,7 +11,7 @@ let data;
 
 export const setup = () => {}
 
-export const load = (e, next) => {
+export const load = (e, next, back, set) => {
     state = undefined;
     data = [];
 
@@ -32,7 +32,7 @@ export const load = (e, next) => {
 
         if (!l) {
             text[0] = empty;
-            next(true);
+            set(undefined);
             next(false);
             return;
         }
@@ -40,7 +40,10 @@ export const load = (e, next) => {
         text[0] = `${l} Image${l === 1 ? '' : 's'}`;
 
         const onload = () => {
-            if (--l === 0) next(true);
+            if (--l === 0) {
+                set('upload');
+                next(true);
+            }
         }
 
         data = files.map(f => {
