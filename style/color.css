@@ -1,9 +1,6 @@
 #color {
     overflow-y: auto;
     scroll-snap-type: y proximity;
-    padding-bottom: 0 !important;
-    padding-top: 0 !important;
-    margin-top: 1rem;
 }
 
 #color .preview {

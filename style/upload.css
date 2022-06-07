@@ -5,7 +5,7 @@
 #upload #message {
     height: 0;
     max-width: 30rem;
-    padding: 1rem;
+    padding: 0 1rem;
     padding-bottom: 2rem;
     margin: auto;
     flex-grow: 1;
@@ -68,7 +68,6 @@
 #upload #images {
     height: 0;
     flex-grow: 1;
-    padding-top: 1rem;
     padding-left: 1rem;
     overflow-x: scroll;
     display: flex;

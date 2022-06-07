@@ -121,9 +121,10 @@ html.static * {
 
 
 #top, #top-placeholder {
-    height: 2rem;
-    display: flex;
+    height: 3rem;
+    padding-bottom: 1rem;
     align-items: center;
+    display: flex;
 }
 
 #top.float {
@@ -132,6 +133,7 @@ html.static * {
     position: absolute;
     width: calc(100% - 2rem);
     margin: 1rem;
+    margin-bottom: 0rem;
 }
 
 :is(#top .name, #top-placeholder .name) {
@@ -346,8 +348,8 @@ html.static #top .name, :checked + #top-placeholder .name {
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 1rem 0;
     position: absolute;
+    padding-bottom: 1rem;
     flex-direction: column;
     display: flex;
 }
@@ -500,6 +502,31 @@ html.static #top .name, :checked + #top-placeholder .name {
 
 
 
+html::after {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+
+    content:
+        url(/assets/icons/info.svg)
+        url(/assets/icons/back.svg)
+        url(/assets/icons/next.svg)
+        url(/assets/icons/cog.svg)
+        url(/assets/icons/upload.svg)
+        url(/assets/icons/gray.svg)
+        url(/assets/icons/color.svg)
+        url(/assets/icons/duo.svg)
+        url(/assets/icons/save.svg)
+        url(/assets/icons/square.svg)
+        url(/assets/icons/check.svg)
+        url(/assets/icons/pin.svg)
+        url(/assets/icons/plus.svg)
+        url(/assets/icons/min.svg)
+    ;
+}
+
 .icon.info { --mask-image: url(/assets/icons/info.svg); }
 .icon.upload { --mask-image: url(/assets/icons/upload.svg); }
 .icon.gray { --mask-image: url(/assets/icons/gray.svg); }
@@ -514,7 +541,8 @@ html.static #top .name, :checked + #top-placeholder .name {
 
 
 
-:is(button, a).back .icon { --mask-image: url(/assets/icons/back.svg); }
+a.back .icon { --mask-image: url(/assets/icons/back.svg); }
+button.back .icon { --mask-image: url(/assets/icons/back.svg); }
 button.next .icon { --mask-image: url(/assets/icons/back.svg); }
 button.save .icon { --mask-image: url(/assets/icons/save.svg); }
 button.load .icon { --mask-image: url(/assets/icons/cog.svg); }

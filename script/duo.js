@@ -66,7 +66,7 @@ export const setup = e => {
         let v = e.map(e => parseInt(e.value) || 0);
         let o = i % 2 ? 1 : -1;
         let j = i < 2 ? 0 : 1;
-        v[j] += o * 3;
+        v[j] += o * 4;
         e[j].value = v[j];
         set(v, e, j, 0, cb);
         cb(j);

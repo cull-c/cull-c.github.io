@@ -8,6 +8,7 @@
 
 #top .name {
     visibility: hidden;
+    background-color: red;
     z-index: 0;
 }
 
@@ -18,13 +19,14 @@
 #info {
     width: 100%;
     height: 100%;
-    padding: 1rem;
+    padding: 0 1rem;
+    padding-bottom: 2rem;
+
     overflow-y: auto;
     scrollbar-width: 0;
     scroll-behavior: smooth;
-
-    display: flex;
     flex-direction: column;
+    display: flex;
 }
 
 #info::-webkit-scrollbar {
@@ -41,17 +43,15 @@
     transition: none !important;
 }
 
+#top-placeholder + #steps #info #top .icon {
+    transition: none !important;
+}
+
 
 
 /**/
 
 
-
-#info {
-    margin-top: 1rem;
-    padding-bottom: 3rem;
-    padding-top: 0;
-}
 
 #info .section {
     display: flex;
@@ -59,7 +59,7 @@
     padding-top: 1rem;
 }
 
-#info .section .top * {
+#info .section .top > * {
     transition-property: opacity, color;
     transition-duration: var(--transition);
 }
@@ -123,6 +123,7 @@
 
 #info .section .bot label + label a {
     color: var(--inverse);
+    white-space: inherit;
 }
 
 
