@@ -8,7 +8,6 @@
 
 #top .name {
     visibility: hidden;
-    background-color: red;
     z-index: 0;
 }
 
