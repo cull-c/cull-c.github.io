@@ -163,7 +163,11 @@
     opacity: var(--opacity);
 }
 
-#info .section .bot input:checked ~ label {
+#info .section .bot input:checked + label {
+    opacity: var(--opacity);
+}
+
+#info .section .bot input:checked + label + label {
     opacity: var(--opacity);
 }
 
