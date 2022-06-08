@@ -16,8 +16,8 @@ const collage = (d, b) => {
     let layers = [];
 
     let range = [Math.sqrt(d.length), Math.sqrt(total / size)].sort();
-    range[1] = Math.min(d.length, Math.ceil(range[1]));
-    range[0] = Math.max(1, Math.floor(range[0]));
+    range[1] = Math.min(d.length, Math.ceil(range[1] + 1));
+    range[0] = Math.max(1, Math.floor(range[0] - 1));
     for (let l = range[0]; l <= range[1]; ++l) {
         layers.push(new Array(l).fill(0));
     }
