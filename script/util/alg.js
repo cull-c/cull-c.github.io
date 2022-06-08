@@ -7,7 +7,7 @@ const _xyz = [...Array(10000).keys()].map(v => v / 9999).map(v => {
 })
 
 // https://github.com/hamada147/IsThisColourSimilar
-export const lab = (r, g, b) => {
+const lab = (r, g, b) => {
     r = _rgb[r];
     g = _rgb[g];
     b = _rgb[b];
@@ -21,7 +21,7 @@ export const lab = (r, g, b) => {
 }
 
 // https://github.com/antimatter15/rgb-lab
-export const dist = (x, y) => {
+const dist = (x, y) => {
     let l = x[0] - y[0];
     let a = x[1] - y[1];
     let b = x[2] - y[2];
@@ -35,10 +35,12 @@ export const dist = (x, y) => {
     return f < 0 ? 0 : Math.sqrt(f);
 }
 
+export { lab, dist };
+
 
 
 // https://stackoverflow.com/a/17243070
-export const rgb = (h, s, v) => {
+const rgb = (h, s, v) => {
     h = Math.min(1, h / 360);
     s = Math.min(1, s / 100);
     v = Math.min(1, v / 100);
@@ -62,7 +64,7 @@ export const rgb = (h, s, v) => {
 }
 
 // https://stackoverflow.com/a/17243070
-export const hsv = (r, g, b) => {
+const hsv = (r, g, b) => {
     let max = Math.max(r, g, b);
     let min = Math.min(r, g, b);
     let d = max - min;
@@ -81,7 +83,7 @@ export const hsv = (r, g, b) => {
 }
 
 // https://stackoverflow.com/a/17243070
-export const hsl = (h, s, v) => {
+const hsl = (h, s, v) => {
     s = Math.min(1, s / 100);
     v = Math.min(1, v / 100);
 
@@ -93,6 +95,8 @@ export const hsl = (h, s, v) => {
 
     return [h, Math.round(_s * 100), Math.round(_l * 100)];
 }
+
+export { rgb, hsv, hsl };
 
 
 
@@ -128,7 +132,7 @@ const B = (a, b) => 3 * b - 6 * a;
 const C = (a) => 3 * a;
 
 // https://github.com/gre/bezier-easing
-export const bezier = (ax, ay, bx, by) => {
+const bezier = (ax, ay, bx, by) => {
     if (ax === ay && bx === by) return x => x;
     let sample = new Array(11);
     let l = sample.length - 1;
@@ -154,3 +158,5 @@ export const bezier = (ax, ay, bx, by) => {
         return calc(t(x), ay, by);
     }
 }
+
+export { bezier };

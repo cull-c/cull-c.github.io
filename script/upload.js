@@ -104,4 +104,4 @@ export const clear = () => {}
 
 
 let empty = 'Upload';
-export let text = [empty];
+export const text = [empty];

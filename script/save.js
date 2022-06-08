@@ -1,5 +1,6 @@
 import { link, radio, check, range, snap, shot, changed } from './util/link.js';
-import { _rgb, compute, blob, png, zip, download } from './util/index.js';
+import { compute, blob, png, zip, download } from './util/index.js';
+import { collage } from './util/collage.js';
 import * as upload from './upload.js';
 import * as gray from './gray.js';
 import * as color from './color.js';
@@ -8,57 +9,6 @@ import * as duo from './duo.js';
 let data;
 
 
-
-const collage = d => {
-    let widths = d.map(i => i.width);
-    let heights = d.map(i => i.height);
-    let sizes = [widths, heights].map(l => Math.max(...l));
-    let diffs = [widths, heights].map((l, i) => sizes[i] - Math.min(...l));
-    const m = (f, s) => layers.reduce((a, c, i) => f(c, a[0]) ? [c, i] : a, [s, 0])[1];
-    const max = () => m((c, a) => c > a, -Infinity);
-    const min = () => m((c, a) => c < a, Infinity);
-    let c = diffs[0] <= diffs[1];
-    let size = sizes[+!c];
-
-    let total = (c ? heights : widths).reduce((a, b) => a + b, 0);
-    let layers = new Array(Math.max(1, Math.round(Math.sqrt(total / size))));
-    if (layers.length > d.length) layers = layers.slice(0, d.length);
-    layers.fill(0);
-
-    for (let i = 0; i < d.length; ++i) {
-        let j = min();
-        d[i].x = c ? j * size : layers[j];
-        d[i].y = c ? layers[j] : j * size;
-        layers[j] += c ? d[i].height : d[i].width;
-    }
-
-    let width = c ? size * layers.length : layers[max()];
-    let height = c ? layers[max()] : size * layers.length;
-    let dim = c ? height : width;
-
-    for (let i = 0; i < d.length; ++i) {
-        let j = Math.floor((c ? d[i].x : d[i].y) / size);
-        let a = (size - (c ? d[i].width : d[i].height)) / 2;
-        let b = (dim - (layers[j] || dim)) / 2;
-        d[i].x += Math.round(c ? a : b);
-        d[i].y += Math.round(c ? b : a);
-    }
-
-    let canvas = document.createElement('canvas');
-    let ctx = canvas.getContext('2d');
-    canvas.height = height;
-    canvas.width = width;
-
-    let inv = data.inverse;
-    ctx.fillStyle = _rgb(inv ? data.front : data.back);
-    ctx.fillRect(0, 0, width, height);
-
-    for (let i = 0; i < d.length; ++i) {
-        ctx.putImageData(d[i], d[i].x, d[i].y);
-    }
-
-    return canvas;
-}
 
 const _stats = ([o, t, w, h, s, scale, width, height]) => {
     let widths = data?.imgs?.map(img => img.naturalWidth) || [0];
@@ -159,7 +109,8 @@ const save = async (d, o) => {
 
     if (o === 2) {
         let name = 'cullage.png';
-        let file = await blob(collage(d));
+        let back = data.inverse ? data.front : data.back;
+        let file = await blob(collage(d, back));
         download(file, name);
     }
 
