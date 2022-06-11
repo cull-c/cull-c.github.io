@@ -1,9 +1,8 @@
 #duo .row span.name {
-    margin-right: 1rem;
     width: 0;
     flex-grow: 1;
+    margin-right: 1rem;
     max-width: min-content;
-    align-self: flex-start;
     color: var(--muted);
 }
 

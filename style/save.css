@@ -80,7 +80,7 @@
     max-width: 100%;
 }
 
-#save > :first-child + .row + .row label .target {
+#save > :first-child + .row label .target {
     font-weight: 900;
 }
 

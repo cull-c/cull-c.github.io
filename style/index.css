@@ -1,18 +1,18 @@
 @font-face {
     font-family: helvetica-neue;
-    src: url(/assets/fonts/medium.ttf);
+    src: url(/assets/font/medium.woff2);
 }
 
 @font-face {
     font-weight: bold;
     font-family: helvetica-neue;
-    src: url(/assets/fonts/bold.ttf);
+    src: url(/assets/font/bold.woff2);
 }
 
 @font-face {
     font-weight: 900;
     font-family: helvetica-neue;
-    src: url(/assets/fonts/heavy.ttf);
+    src: url(/assets/font/black.woff2);
 }
 
 html {
@@ -247,7 +247,6 @@ html.static #top .name, :checked + #top-placeholder .name {
 #bot :is(button, a) span {
     width: 3rem;
     height: 100%;
-    line-height: 0;
     font-weight: 900;
 
     display: flex;
