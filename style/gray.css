@@ -166,6 +166,6 @@
 #gray .picker button {
     width: 6rem;
     height: 100%;
-    font-weight: 900;
+    font-weight: 800;
     color: var(--inverse);
 }

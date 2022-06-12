@@ -20,7 +20,7 @@
     justify-content: center;
     border-radius: var(--radius);
     background-color: var(--hover);
-    font-weight: 900;
+    font-weight: 800;
     color: black;
 }
 
@@ -66,7 +66,6 @@
 }
 
 #save .row label {
-    height: 100%;
     flex-shrink: 1;
 
     display: flex;  
@@ -81,7 +80,7 @@
 }
 
 #save > :first-child + .row label .target {
-    font-weight: 900;
+    font-weight: 800;
 }
 
 #save .row label .target.yellow {
