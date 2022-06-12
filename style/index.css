@@ -244,8 +244,9 @@ html.static #top .name, :checked + #top-placeholder .name {
 #bot :is(button, a) {
     height: 100%;
     padding: 0 0.5rem;
-    
+
     display: flex;
+    text-align: center;
     align-items: center;
     border-radius: var(--radius);
     background-color: var(--accent);
