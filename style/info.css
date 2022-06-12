@@ -112,6 +112,7 @@
 
 #info .section .bot label + label {
     width: calc(100% - 2rem);
+    padding-top: 0.2rem;
     margin-bottom: 1rem;
     padding-left: 0.5rem;
     text-overflow: ellipsis;
@@ -132,7 +133,7 @@
 
 #info .section .bot input + label {
     width: 1.5rem;
-    height: 1.25rem;
+    height: 1.5rem;
 
     --mask-position: center;
     --mask-repeat: no-repeat;

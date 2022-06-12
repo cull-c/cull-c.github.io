@@ -1,32 +1,24 @@
 @font-face {
     font-family: helvetica-neue;
     src: url(/assets/font/medium.woff2);
-    ascent-override: 75%;
-    descent-override: 0%;
 }
 
 @font-face {
     font-weight: bold;
     font-family: helvetica-neue;
     src: url(/assets/font/bold.woff2);
-    ascent-override: 75%;
-    descent-override: 0%;
 }
 
 @font-face {
     font-weight: 800;
     font-family: helvetica-neue;
     src: url(/assets/font/heavy.woff2);
-    ascent-override: 75%;
-    descent-override: 0%;
 }
 
 @font-face {
     font-weight: 900;
     font-family: helvetica-neue;
     src: url(/assets/font/black.woff2);
-    ascent-override: 75%;
-    descent-override: 0%;
 }
 
 html {
