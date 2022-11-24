@@ -92,6 +92,10 @@ const picker = (f, c, next, back,  cb) => {
         back(true);
         scrolled('gray', undefined);
         bot.classList.remove('pick');
+        canvas.onmousedown = undefined;
+        canvas.onmousemove = undefined;
+        canvas.ontouchmove = undefined;
+        canvas.ontouchstart = undefined;
     }
 
     const set = (x, y, z) => {
