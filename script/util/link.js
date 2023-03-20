@@ -1,6 +1,6 @@
 import { bin, int, encode, decode } from './base.js';
 
-const _default = '8____0000000o8AJv00_br280010';
+const _default = '8____0000000o8AJv00_bo280010';
 
 let i = 0;
 let b = [];
@@ -37,20 +37,12 @@ const search = () => {
     return q;
 }
 
-let storage = true;
+let storage = 0;
 const store = () => {
-    if (!storage) {
-        return storage = false;
-    }
-
-    storage = undefined;
-    history.replaceState(null, '', search());
-    setTimeout(() => {
-        let items = storage === false;
-        storage = true;
-        if (!items) return;
-        requestAnimationFrame(store);
-    }, 100);
+    clearTimeout(storage);
+    storage = setTimeout(() => {
+        history.replaceState(null, '', search());
+    }, 1000);
 }
 
 const restore = () => {
