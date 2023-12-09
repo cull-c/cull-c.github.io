@@ -22,18 +22,18 @@ const set = (i, n, v) => {
 }
 
 const init = () => {
-    let s = location.search.slice(1);
+    let s = location.hash.slice(1);
     s = s + _default.slice(s.length);
     s = s.slice(0, _default.length);
     b = decode(s);
     store();
 }
 
-const search = () => {
+const hash = () => {
     let q = encode(b);
     let i = q.length - 1;
     while (i >= 0 && (q[i] === (_default[i] || '0'))) --i;
-    q = i >= 0 ? '/?' + q.slice(0, i + 1) : '/';
+    q = i >= 0 ? '/#' + q.slice(0, i + 1) : '/';
     return q;
 }
 
@@ -41,12 +41,12 @@ let storage = 0;
 const store = () => {
     clearTimeout(storage);
     storage = setTimeout(() => {
-        history.replaceState(null, '', search());
-    }, 1000);
+        history.replaceState(null, '', hash());
+    }, 500);
 }
 
 const restore = () => {
-    history.pushState(null, '', search());
+    history.pushState(null, '', hash());
 }
 
 let current = '';
