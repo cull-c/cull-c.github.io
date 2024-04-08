@@ -109,9 +109,13 @@ window.onload = () => {
         return true;
     }
 
-    const previous = () => set(step(step() - 1));
-    back.onclick = previous;
-    next.onclick = () => {
+    let first = true;
+
+    const previous = () => {
+        set(step(step() - 1));
+    }
+
+    const following = () => {
         let s = step();
         let id = step(s);
         let e = document.querySelector('#steps > #' + id);
@@ -121,10 +125,18 @@ window.onload = () => {
             e.classList.add('disabled');
             next.classList.add('load');
         }
+        if (first) {
+            restore();
+            first = false;
+        }
     }
 
+    back.onclick = previous;
+    next.onclick = following;
+
     window.onpopstate = () => {
-        if (!back.disabled) previous();
+        if (back.disabled) return;
+        previous();
         restore();
     }
 
@@ -140,6 +152,5 @@ window.onload = () => {
         section();
     })
 
-    restore();
     set('', false);
 }
