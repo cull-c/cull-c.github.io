@@ -135,7 +135,10 @@ window.onload = () => {
     next.onclick = following;
 
     window.onpopstate = () => {
-        if (back.disabled) return;
+        if (back.disabled) {
+            first = true;
+            return;
+        }
         previous();
         restore();
     }
