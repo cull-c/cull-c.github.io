@@ -33,7 +33,7 @@ const hash = () => {
     let q = encode(b);
     let i = q.length - 1;
     while (i >= 0 && (q[i] === (_default[i] || '0'))) --i;
-    q = i >= 0 ? '/#' + q.slice(0, i + 1) : '/';
+    q = i >= 0 ? '#' + q.slice(0, i + 1) : '';
     return q;
 }
 
@@ -41,12 +41,12 @@ let storage = 0;
 const store = () => {
     clearTimeout(storage);
     storage = setTimeout(() => {
-        history.replaceState(null, '', hash());
+        location.hash = hash();
     }, 500);
 }
 
 const restore = () => {
-    history.pushState(null, '', hash());
+    history.pushState(null, '', `/${hash()}`);
 }
 
 let current = '';
@@ -180,3 +180,4 @@ init();
 
 export { restore, link, radio, check, range, scroll };
 export { section, snap, shot, changed, scrolled };
+
